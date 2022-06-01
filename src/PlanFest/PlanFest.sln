@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32505.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanFest", "PlanFest.csproj", "{F876D8D3-99A9-4A53-B105-4D9E8E649C3A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F876D8D3-99A9-4A53-B105-4D9E8E649C3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F876D8D3-99A9-4A53-B105-4D9E8E649C3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F876D8D3-99A9-4A53-B105-4D9E8E649C3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F876D8D3-99A9-4A53-B105-4D9E8E649C3A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9405B51E-21AA-4C73-82CC-BC0F92F299CE}
+	EndGlobalSection
+EndGlobal
