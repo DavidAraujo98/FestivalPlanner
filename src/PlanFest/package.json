@@ -1,0 +1,61 @@
+{
+  "name": "PlanFest",
+  "productName": "planfest",
+  "version": "1.0.0",
+  "description": "An SGBD for connection to a MSSQL server for management of festivals",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
+  },
+  "keywords": [],
+  "author": {
+    "name": "David Araújo",
+    "email": "david2araujo5@gmail.com"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "planfest",
+            "certificateFile": "./cert.pfx",
+            "certificatePassword": "this-is-a-secret"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-dmg",
+          "config": {
+            "name": "planfest",
+            "icon": "./assets/mac_icon.png",
+            "background": "./assets/dmg-background.png",
+            "format": "ULFO"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-snap",
+          "config": {
+            "name": "planfest"
+          }
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.63",
+    "@electron-forge/maker-deb": "^6.0.0-beta.63",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.63",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.63",
+    "@electron-forge/maker-zip": "^6.0.0-beta.63",
+    "electron": "19.0.3"
+  }
+}
