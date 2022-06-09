@@ -47,11 +47,11 @@ namespace PlanFest
             this.logo = new System.Windows.Forms.PictureBox();
             this.btn_festivals = new System.Windows.Forms.Button();
             this.btn_concerts = new System.Windows.Forms.Button();
-            this.panel_home = new System.Windows.Forms.Panel();
             this.btn_stages = new System.Windows.Forms.Button();
             this.btn_bands = new System.Windows.Forms.Button();
             this.btn_meals = new System.Windows.Forms.Button();
             this.btn_staff = new System.Windows.Forms.Button();
+            this.panel_home = new System.Windows.Forms.Panel();
             this.server.SuspendLayout();
             this.user.SuspendLayout();
             this.password.SuspendLayout();
@@ -285,16 +285,6 @@ namespace PlanFest
             this.btn_concerts.UseVisualStyleBackColor = true;
             this.btn_concerts.Click += new System.EventHandler(this.button1_Click);
             // 
-            // panel_home
-            // 
-            this.panel_home.Controls.Add(this.menu);
-            this.panel_home.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_home.Location = new System.Drawing.Point(0, 0);
-            this.panel_home.Name = "panel_home";
-            this.panel_home.Size = new System.Drawing.Size(910, 542);
-            this.panel_home.TabIndex = 7;
-            this.panel_home.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_home_Paint);
-            // 
             // btn_stages
             // 
             this.btn_stages.AutoSize = true;
@@ -369,14 +359,24 @@ namespace PlanFest
             this.btn_staff.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_staff.UseVisualStyleBackColor = true;
             // 
+            // panel_home
+            // 
+            this.panel_home.Controls.Add(this.menu);
+            this.panel_home.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_home.Location = new System.Drawing.Point(0, 0);
+            this.panel_home.Name = "panel_home";
+            this.panel_home.Size = new System.Drawing.Size(910, 542);
+            this.panel_home.TabIndex = 7;
+            this.panel_home.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_home_Paint);
+            // 
             // PlanFest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(910, 542);
-            this.Controls.Add(this.form_input);
             this.Controls.Add(this.panel_home);
+            this.Controls.Add(this.form_input);
             this.Name = "PlanFest";
             this.Text = "PlanFest";
             this.Load += new System.EventHandler(this.Form1_Load);
