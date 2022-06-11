@@ -17,7 +17,6 @@ namespace PlanFest
         public PlanFest()
         {
             InitializeComponent();
-            panel_home.Hide();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -27,7 +26,8 @@ namespace PlanFest
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            hideAll();
+            form_login.Show();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -40,8 +40,13 @@ namespace PlanFest
             bool temp = TestDBConnection(server_input.Text, user_input.Text, user_input.Text, password_input.Text);
             if (temp)
             {
-                showOnly(panel_home);
+                hideAll();
+                panel_base.Show();
+                panel_openfestival.Show();
             }
+            hideAll();
+            panel_base.Show();
+            panel_openfestival.Show();
         }
 
         private bool TestDBConnection(string dbServer, string dbName, string userName, string userPass)
@@ -109,17 +114,28 @@ namespace PlanFest
 
         }
         
-        private void showOnly(Panel e)
+        private void hideAll()
         {
 
             foreach (var pnl in Controls.OfType<Panel>())
             {
-                if(pnl.Name != e.Name)
-                {
-                    pnl.Hide();
-                }
+                pnl.Hide();
             }
-            e.Show(); 
+        }
+
+        private void btn_openfestival_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

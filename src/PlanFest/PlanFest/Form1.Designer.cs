@@ -41,7 +41,7 @@ namespace PlanFest
             this.password = new System.Windows.Forms.FlowLayoutPanel();
             this.password_label = new System.Windows.Forms.Label();
             this.password_input = new System.Windows.Forms.TextBox();
-            this.form_input = new System.Windows.Forms.FlowLayoutPanel();
+            this.form_login = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_connect = new System.Windows.Forms.Button();
             this.menu = new System.Windows.Forms.FlowLayoutPanel();
             this.logo = new System.Windows.Forms.PictureBox();
@@ -51,14 +51,20 @@ namespace PlanFest
             this.btn_bands = new System.Windows.Forms.Button();
             this.btn_meals = new System.Windows.Forms.Button();
             this.btn_staff = new System.Windows.Forms.Button();
-            this.panel_home = new System.Windows.Forms.Panel();
+            this.panel_base = new System.Windows.Forms.Panel();
+            this.panel_openfestival = new System.Windows.Forms.Panel();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.btn_openfestival = new System.Windows.Forms.Button();
+            this.btn_addfestival = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.server.SuspendLayout();
             this.user.SuspendLayout();
             this.password.SuspendLayout();
-            this.form_input.SuspendLayout();
+            this.form_login.SuspendLayout();
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
-            this.panel_home.SuspendLayout();
+            this.panel_base.SuspendLayout();
+            this.panel_openfestival.SuspendLayout();
             this.SuspendLayout();
             // 
             // server_input
@@ -179,23 +185,23 @@ namespace PlanFest
             this.password_input.TabIndex = 0;
             this.password_input.UseSystemPasswordChar = true;
             // 
-            // form_input
+            // form_login
             // 
-            this.form_input.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.form_input.AutoSize = true;
-            this.form_input.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.form_input.BackColor = System.Drawing.Color.White;
-            this.form_input.Controls.Add(this.server);
-            this.form_input.Controls.Add(this.user);
-            this.form_input.Controls.Add(this.password);
-            this.form_input.Controls.Add(this.btn_connect);
-            this.form_input.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.form_input.Location = new System.Drawing.Point(273, 120);
-            this.form_input.Margin = new System.Windows.Forms.Padding(0);
-            this.form_input.Name = "form_input";
-            this.form_input.Padding = new System.Windows.Forms.Padding(40);
-            this.form_input.Size = new System.Drawing.Size(345, 311);
-            this.form_input.TabIndex = 5;
+            this.form_login.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.form_login.AutoSize = true;
+            this.form_login.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.form_login.BackColor = System.Drawing.Color.White;
+            this.form_login.Controls.Add(this.server);
+            this.form_login.Controls.Add(this.user);
+            this.form_login.Controls.Add(this.password);
+            this.form_login.Controls.Add(this.btn_connect);
+            this.form_login.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.form_login.Location = new System.Drawing.Point(273, 120);
+            this.form_login.Margin = new System.Windows.Forms.Padding(0);
+            this.form_login.Name = "form_login";
+            this.form_login.Padding = new System.Windows.Forms.Padding(40);
+            this.form_login.Size = new System.Drawing.Size(345, 311);
+            this.form_login.TabIndex = 5;
             // 
             // btn_connect
             // 
@@ -359,15 +365,83 @@ namespace PlanFest
             this.btn_staff.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_staff.UseVisualStyleBackColor = true;
             // 
-            // panel_home
+            // panel_base
             // 
-            this.panel_home.Controls.Add(this.menu);
-            this.panel_home.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_home.Location = new System.Drawing.Point(0, 0);
-            this.panel_home.Name = "panel_home";
-            this.panel_home.Size = new System.Drawing.Size(910, 542);
-            this.panel_home.TabIndex = 7;
-            this.panel_home.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_home_Paint);
+            this.panel_base.Controls.Add(this.panel_openfestival);
+            this.panel_base.Controls.Add(this.menu);
+            this.panel_base.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_base.Location = new System.Drawing.Point(0, 0);
+            this.panel_base.Name = "panel_base";
+            this.panel_base.Size = new System.Drawing.Size(910, 542);
+            this.panel_base.TabIndex = 7;
+            this.panel_base.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_home_Paint);
+            // 
+            // panel_openfestival
+            // 
+            this.panel_openfestival.Controls.Add(this.label1);
+            this.panel_openfestival.Controls.Add(this.btn_addfestival);
+            this.panel_openfestival.Controls.Add(this.listBox1);
+            this.panel_openfestival.Controls.Add(this.btn_openfestival);
+            this.panel_openfestival.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_openfestival.Location = new System.Drawing.Point(173, 0);
+            this.panel_openfestival.Name = "panel_openfestival";
+            this.panel_openfestival.Size = new System.Drawing.Size(737, 542);
+            this.panel_openfestival.TabIndex = 7;
+            // 
+            // listBox1
+            // 
+            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(17, 125);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(708, 286);
+            this.listBox1.TabIndex = 0;
+            // 
+            // btn_openfestival
+            // 
+            this.btn_openfestival.AutoSize = true;
+            this.btn_openfestival.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(175)))), ((int)(((byte)(255)))));
+            this.btn_openfestival.Enabled = false;
+            this.btn_openfestival.FlatAppearance.BorderSize = 0;
+            this.btn_openfestival.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_openfestival.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_openfestival.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
+            this.btn_openfestival.Location = new System.Drawing.Point(355, 423);
+            this.btn_openfestival.Name = "btn_openfestival";
+            this.btn_openfestival.Size = new System.Drawing.Size(182, 30);
+            this.btn_openfestival.TabIndex = 7;
+            this.btn_openfestival.Text = "Open Festival";
+            this.btn_openfestival.UseVisualStyleBackColor = true;
+            this.btn_openfestival.Click += new System.EventHandler(this.btn_openfestival_Click);
+            // 
+            // btn_addfestival
+            // 
+            this.btn_addfestival.AutoSize = true;
+            this.btn_addfestival.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(175)))), ((int)(((byte)(255)))));
+            this.btn_addfestival.FlatAppearance.BorderSize = 0;
+            this.btn_addfestival.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_addfestival.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_addfestival.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
+            this.btn_addfestival.Location = new System.Drawing.Point(543, 423);
+            this.btn_addfestival.Name = "btn_addfestival";
+            this.btn_addfestival.Size = new System.Drawing.Size(182, 30);
+            this.btn_addfestival.TabIndex = 8;
+            this.btn_addfestival.Text = "Add Festival";
+            this.btn_addfestival.UseVisualStyleBackColor = true;
+            this.btn_addfestival.Click += new System.EventHandler(this.button1_Click_2);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
+            this.label1.Location = new System.Drawing.Point(12, 92);
+            this.label1.Margin = new System.Windows.Forms.Padding(3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 25);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Festivals";
+            this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // PlanFest
             // 
@@ -375,8 +449,8 @@ namespace PlanFest
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(910, 542);
-            this.Controls.Add(this.panel_home);
-            this.Controls.Add(this.form_input);
+            this.Controls.Add(this.panel_base);
+            this.Controls.Add(this.form_login);
             this.Name = "PlanFest";
             this.Text = "PlanFest";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -386,13 +460,15 @@ namespace PlanFest
             this.user.PerformLayout();
             this.password.ResumeLayout(false);
             this.password.PerformLayout();
-            this.form_input.ResumeLayout(false);
-            this.form_input.PerformLayout();
+            this.form_login.ResumeLayout(false);
+            this.form_login.PerformLayout();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
-            this.panel_home.ResumeLayout(false);
-            this.panel_home.PerformLayout();
+            this.panel_base.ResumeLayout(false);
+            this.panel_base.PerformLayout();
+            this.panel_openfestival.ResumeLayout(false);
+            this.panel_openfestival.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -410,17 +486,22 @@ namespace PlanFest
         private System.Windows.Forms.FlowLayoutPanel password;
         private System.Windows.Forms.Label password_label;
         private System.Windows.Forms.TextBox password_input;
-        private System.Windows.Forms.FlowLayoutPanel form_input;
+        private System.Windows.Forms.FlowLayoutPanel form_login;
         private System.Windows.Forms.Button btn_connect;
         private System.Windows.Forms.FlowLayoutPanel menu;
         private System.Windows.Forms.PictureBox logo;
         private System.Windows.Forms.Button btn_festivals;
         private System.Windows.Forms.Button btn_concerts;
         private System.Windows.Forms.Button btn_stages;
-        private System.Windows.Forms.Panel panel_home;
+        private System.Windows.Forms.Panel panel_base;
         private System.Windows.Forms.Button btn_bands;
         private System.Windows.Forms.Button btn_meals;
         private System.Windows.Forms.Button btn_staff;
+        private System.Windows.Forms.Panel panel_openfestival;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button btn_openfestival;
+        private System.Windows.Forms.Button btn_addfestival;
+        private System.Windows.Forms.Label label1;
     }
 }
 
