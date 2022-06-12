@@ -12,10 +12,10 @@ namespace PlanFest
         public string email { get; set; }
         public string address { get; set; }
         public string name { get; set; }
-        public int telephone { get; set; }
-        public int NIF { get; set; }
+        public string telephone { get; set; }
+        public string NIF { get; set; }
 
-        public Company(string email="", string address="", string name="", int telephone=0, int NIF=0) : base()
+        public Company(string email="", string address="", string name="", string telephone="", string NIF="") : base()
         {
             this.email = email;
             this.address = address;

@@ -12,7 +12,7 @@ namespace PlanFest
         public string artisticName { get; set; }
         public Instrument instrument { get; set; }
 
-        public Musician(int nCC = 0, int telephone = 0, string name = "", string sex = "", string email = "", string artisticName="", Instrument instrument=null) : base(nCC,telephone,name,sex,email)
+        public Musician(string nCC = "", string telephone = "", string name = "", string sex = "", string email = "", string artisticName="", Instrument instrument=null) : base(nCC,telephone,name,sex,email)
         {
             this.artisticName = artisticName;
             this.instrument = instrument;

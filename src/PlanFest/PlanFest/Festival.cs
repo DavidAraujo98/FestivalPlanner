@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 
 namespace PlanFest
 {
@@ -14,7 +13,7 @@ namespace PlanFest
         public string name { get; set; }
         public string dateEnd { get; set; }
         public string dateBegin { get; set; }
-        public int id { get; set; }
+        public string id { get; set; }
         public int ndays { get; set; }
         public int ntickets { get; set; }
         public Promoter promoter { get; set; }
@@ -32,7 +31,7 @@ namespace PlanFest
             meals.Add(e);
         }
 
-        public Festival(string name="", string dateEnd="", string dateBegin="", int id=0, int ndays=0, int ntickets=0, Promoter promoter=null, Manager manager=null, List<Meal> meals=null, List<Stage> stages=null) : base()
+        public Festival(string name="", string dateEnd="", string dateBegin="", string id="", int ndays=0, int ntickets=0, Promoter promoter=null, Manager manager=null, List<Meal> meals=null, List<Stage> stages=null) : base()
         {
             this.name = name;
             this.dateEnd = dateEnd;

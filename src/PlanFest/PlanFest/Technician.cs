@@ -13,7 +13,7 @@ namespace PlanFest
 
         public Group group { get; set; }
 
-        public Technician (int nCC= 0, int telephone = 0, string name = "", string sex = "", string email = "", string type="", Group group=null) : base(nCC, telephone, name, sex, email)
+        public Technician (string nCC= "", string telephone = "", string name = "", string sex = "", string email = "", string type="", Group group=null) : base(nCC, telephone, name, sex, email)
         {
             this.group = group;
             this.type = type;

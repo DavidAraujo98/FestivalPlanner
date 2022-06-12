@@ -9,14 +9,14 @@ namespace PlanFest
     [Serializable()]
     internal class Concert
     {
-        public int id { get; set; }
-        public int dur { get; set; }
+        public string id { get; set; }
+        public string dur { get; set; }
         public string dateBegin { get; set; }
         public Stage stage { get; set; }
         public SoundCheck soundcheck { get; set; }
         public Band band { get; set; }
 
-        public Concert(int id=0, int dur=0, string dateBegin="", Stage stage=null, SoundCheck soundcheck=null, Band band=null)
+        public Concert(string id="", string dur="", string dateBegin="", Stage stage=null, SoundCheck soundcheck=null, Band band=null)
         {
             this.id = id;
             this.dur = dur;

@@ -13,7 +13,7 @@ namespace PlanFest
 {
     public partial class PlanFest : Form
     {
-        
+        private SqlConnection CN;
         public PlanFest()
         {
             InitializeComponent();
@@ -30,11 +30,6 @@ namespace PlanFest
             form_login.Show();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_connect_Click(object sender, EventArgs e)
         {
             bool temp = TestDBConnection(server_input.Text, user_input.Text, user_input.Text, password_input.Text);
@@ -42,17 +37,21 @@ namespace PlanFest
             {
                 hideAll();
                 panel_base.Show();
-                panel_openfestival.Show();
+                panel_festivalslist.Show();
+                panel_festival.Hide();
             }
+            /* ---------- For testing only ----------  */
             hideAll();
             panel_base.Show();
-            panel_openfestival.Show();
+            panel_festivalslist.Show();
+            panel_festival.Hide();
+            /* ---------- For testing only ----------  */
         }
 
         private bool TestDBConnection(string dbServer, string dbName, string userName, string userPass)
         {
             bool temp = false;
-            SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName + "; uid = " + userName + ";" + "password = " + userPass);
+            CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName + "; uid = " + userName + ";" + "password = " + userPass);
             try
             {
                 CN.Open();
@@ -134,6 +133,76 @@ namespace PlanFest
         }
 
         private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_festivalname_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel_festival_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void datepicker_festivalbegining_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_editfestival_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void datepicker_festivalend_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label18_Click(object sender, EventArgs e)
         {
 
         }

@@ -14,7 +14,7 @@ namespace PlanFest
         public string dateBegin { get; set; }
         public string dateEnd { get; set; }
 
-        public Promoter (int nCC = 0, int telephone = 0, string name = "", string sex = "", string email = "", Festival festival=null, string type="",  string dateBegin="", string dateEnd="") : base(nCC, telephone, name, sex, email)
+        public Promoter (string nCC = "", string telephone = "", string name = "", string sex = "", string email = "", Festival festival=null, string type="",  string dateBegin="", string dateEnd="") : base(nCC, telephone, name, sex, email)
         {
             this.type = type;
             this.festival = festival;

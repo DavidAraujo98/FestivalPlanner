@@ -9,13 +9,13 @@ namespace PlanFest
     [Serializable()]
     internal class Person
     {
-        public int cc { get; set; }
-        public int telephone { get; set; }
+        public string cc { get; set; }
+        public string telephone { get; set; }
         public String name { get; set; }
         public String sex { get; set; }
         public String email { get; set; }
 
-        public Person(int nCC=0, int telephone=0, string name="", string sex="", string email="") : base()
+        public Person(string nCC="", string telephone="", string name="", string sex="", string email="") : base()
         {
             this.cc = nCC;
             this.telephone = telephone;
