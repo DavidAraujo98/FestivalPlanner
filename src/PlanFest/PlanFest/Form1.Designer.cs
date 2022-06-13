@@ -54,6 +54,7 @@ namespace PlanFest
             this.panel_base = new System.Windows.Forms.Panel();
             this.panel_festivalslist = new System.Windows.Forms.Panel();
             this.panel_festival = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
             this.numericUpDown_ticketssold = new System.Windows.Forms.NumericUpDown();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -94,9 +95,8 @@ namespace PlanFest
             this.btn_editfestival = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_addfestival = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBox_festivalsview = new System.Windows.Forms.ListBox();
             this.btn_openfestival = new System.Windows.Forms.Button();
-            this.label19 = new System.Windows.Forms.Label();
             this.server.SuspendLayout();
             this.user.SuspendLayout();
             this.password.SuspendLayout();
@@ -422,7 +422,7 @@ namespace PlanFest
             this.panel_festivalslist.Controls.Add(this.panel_festival);
             this.panel_festivalslist.Controls.Add(this.label1);
             this.panel_festivalslist.Controls.Add(this.btn_addfestival);
-            this.panel_festivalslist.Controls.Add(this.listBox1);
+            this.panel_festivalslist.Controls.Add(this.listBox_festivalsview);
             this.panel_festivalslist.Controls.Add(this.btn_openfestival);
             this.panel_festivalslist.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_festivalslist.Location = new System.Drawing.Point(173, 0);
@@ -477,6 +477,16 @@ namespace PlanFest
             this.panel_festival.Size = new System.Drawing.Size(737, 542);
             this.panel_festival.TabIndex = 10;
             this.panel_festival.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_festival_Paint);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label19.Location = new System.Drawing.Point(352, 151);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(99, 13);
+            this.label19.TabIndex = 40;
+            this.label19.Text = "Total of tickets sold";
             // 
             // numericUpDown_ticketssold
             // 
@@ -915,16 +925,18 @@ namespace PlanFest
             this.btn_addfestival.UseVisualStyleBackColor = true;
             this.btn_addfestival.Click += new System.EventHandler(this.button1_Click_2);
             // 
-            // listBox1
+            // listBox_festivalsview
             // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.listBox_festivalsview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(17, 140);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(708, 277);
-            this.listBox1.TabIndex = 0;
+            this.listBox_festivalsview.FormattingEnabled = true;
+            this.listBox_festivalsview.Location = new System.Drawing.Point(17, 140);
+            this.listBox_festivalsview.MultiColumn = true;
+            this.listBox_festivalsview.Name = "listBox_festivalsview";
+            this.listBox_festivalsview.Size = new System.Drawing.Size(708, 277);
+            this.listBox_festivalsview.TabIndex = 0;
+            this.listBox_festivalsview.SelectedIndexChanged += new System.EventHandler(this.listBox_festivalsview_SelectedIndexChanged);
             // 
             // btn_openfestival
             // 
@@ -943,16 +955,6 @@ namespace PlanFest
             this.btn_openfestival.Text = "Open Festival";
             this.btn_openfestival.UseVisualStyleBackColor = true;
             this.btn_openfestival.Click += new System.EventHandler(this.btn_openfestival_Click);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label19.Location = new System.Drawing.Point(352, 151);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(99, 13);
-            this.label19.TabIndex = 40;
-            this.label19.Text = "Total of tickets sold";
             // 
             // PlanFest
             // 
@@ -1012,7 +1014,7 @@ namespace PlanFest
         private System.Windows.Forms.Button btn_meals;
         private System.Windows.Forms.Button btn_staff;
         private System.Windows.Forms.Panel panel_festivalslist;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBox_festivalsview;
         private System.Windows.Forms.Button btn_openfestival;
         private System.Windows.Forms.Button btn_addfestival;
         private System.Windows.Forms.Label label1;

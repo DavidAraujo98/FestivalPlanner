@@ -26,13 +26,15 @@ namespace PlanFest
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            loadContacts();
             hideAll();
             form_login.Show();
         }
 
         private void btn_connect_Click(object sender, EventArgs e)
         {
-            bool temp = TestDBConnection(server_input.Text, user_input.Text, user_input.Text, password_input.Text);
+            bool temp = TestDBConnection();
+            CN.Close()
             if (temp)
             {
                 hideAll();
@@ -48,10 +50,10 @@ namespace PlanFest
             /* ---------- For testing only ----------  */
         }
 
-        private bool TestDBConnection(string dbServer, string dbName, string userName, string userPass)
+        private bool TestDBConnection()
         {
             bool temp = false;
-            CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName + "; uid = " + userName + ";" + "password = " + userPass);
+            CN = new SqlConnection("Data Source = " + server_input.Text + " ;" + "Initial Catalog = " + user_input.Text + "; uid = " + user_input.Text + ";" + "password = " + password_input.Text);
             try
             {
                 CN.Open();
@@ -67,10 +69,43 @@ namespace PlanFest
                 temp = false;
             }
 
-            if (CN.State == ConnectionState.Open)
-                CN.Close();
-
             return temp;
+        }
+
+        private void loadContacts()
+        {
+            if (!TestDBConnection())
+                return;
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Evento", CN);
+            SqlDataReader reader = cmd.ExecuteReader();
+            listBox_festivalsview.Items.Clear();
+
+            while (reader.Read())
+            {
+                Festival F = new Festival();
+                F.name = reader["nome"].ToString();
+                F.id = reader["id"].ToString();
+                F.dateBegin = reader["dataInicio"].ToString();
+                F.dateEnd = reader["dataFim"].ToString();
+                F.nDays = (int) reader["nDias"];
+                F.nTickets = (int)reader["nBilhetes"];
+
+                cmd = new SqlCommand()
+
+                listBox1.Items.Add(C);
+            }
+
+            CN.Close();
+
+
+            currentContact = 0;
+            ShowContact();
+        }
+
+        private void listBox_festivalsview_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void logo_Click(object sender, EventArgs e)
@@ -206,5 +241,7 @@ namespace PlanFest
         {
 
         }
+
+        
     }
 }

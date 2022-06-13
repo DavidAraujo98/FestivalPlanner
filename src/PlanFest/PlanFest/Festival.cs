@@ -14,8 +14,8 @@ namespace PlanFest
         public string dateEnd { get; set; }
         public string dateBegin { get; set; }
         public string id { get; set; }
-        public int ndays { get; set; }
-        public int ntickets { get; set; }
+        public int nDays { get; set; }
+        public int nTickets { get; set; }
         public Promoter promoter { get; set; }
         public Manager manager { get; set; }
         public List<Meal> meals { get; set; }
@@ -37,8 +37,8 @@ namespace PlanFest
             this.dateEnd = dateEnd;
             this.dateBegin = dateBegin;
             this.id = id;
-            this.ndays = ndays;
-            this.ntickets = ntickets;
+            this.nDays = ndays;
+            this.nTickets = ntickets;
             this.promoter = promoter;
             this.manager = manager;
             this.meals = meals;
