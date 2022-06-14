@@ -1,7 +1,7 @@
 /*	
 ** script to instaciate Database of bd project
 **
-** Miguel Nogueira & David Araï¿½jo
+** Miguel Nogueira & David Araújo
  */
 
  --use p2g2
@@ -185,7 +185,6 @@ CREATE TABLE FP.Manager (
 CREATE TABLE FP.Promotor (
     cc cc,
     tipo str50,
-    dataInicio DATETIME NOT NULL,
     PRIMARY KEY(cc),
     FOREIGN KEY(cc) REFERENCES FP.Pessoa(cc),
 );
@@ -198,6 +197,7 @@ CREATE TABLE FP.Evento (
     dataInicio DATETIME NOT NULL,
     dataFim DATETIME NOT NULL,
     nBilhetes INT,
+    dataProposta DATETIME NOT NULL,
     cc_promotor cc NOT NULL,
     cc_manager cc NOT NULL,
     PRIMARY KEY(id),
