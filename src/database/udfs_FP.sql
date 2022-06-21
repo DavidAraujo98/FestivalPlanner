@@ -208,6 +208,7 @@ GO
 
 ---------------------------
 ----------------------------
+-- Dado um nome do evento, devolver informação sobre o mesmo
 go
 CREATE FUNCTION getOverviewByNome (@nome VARCHAR(20)) RETURNS TABLE AS
 	RETURN(SELECT * FROM FP.V_GERAL
@@ -216,6 +217,7 @@ GO
 --select * from getOverviewByNome('Festa')
 -- drop function getOverviewByNome;
 
+-- Dado um número de dias do evento, devolver informação sobre o mesmo
 go
 CREATE FUNCTION getOverviewByNumdias (@numdias VARCHAR(20)) RETURNS TABLE AS
 	RETURN(SELECT * FROM FP.V_GERAL
@@ -224,6 +226,7 @@ GO
 --select * from getOverviewByNumdias(2)
 -- drop function getOverviewByNumdias;
 
+-- Dado um nome da banda, devolver informação sobre o evento em que a banda participa
 go
 CREATE FUNCTION getOverviewByBanda (@banda VARCHAR(20)) RETURNS TABLE AS
 	RETURN(SELECT * FROM FP.V_GERAL
