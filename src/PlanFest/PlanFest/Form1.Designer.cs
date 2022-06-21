@@ -71,7 +71,7 @@ namespace PlanFest
             this.textBox_managername = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox_promotertype = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox_promoteridnumber = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -130,7 +130,6 @@ namespace PlanFest
             this.server_label.TabIndex = 1;
             this.server_label.Text = "Server name";
             this.server_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.server_label.Click += new System.EventHandler(this.label1_Click);
             // 
             // server
             // 
@@ -449,7 +448,7 @@ namespace PlanFest
             this.panel_festival.Controls.Add(this.textBox_managername);
             this.panel_festival.Controls.Add(this.label11);
             this.panel_festival.Controls.Add(this.label10);
-            this.panel_festival.Controls.Add(this.comboBox1);
+            this.panel_festival.Controls.Add(this.comboBox_promotertype);
             this.panel_festival.Controls.Add(this.label9);
             this.panel_festival.Controls.Add(this.textBox_promoteridnumber);
             this.panel_festival.Controls.Add(this.label8);
@@ -490,7 +489,13 @@ namespace PlanFest
             // 
             // numericUpDown_ticketssold
             // 
+            this.numericUpDown_ticketssold.Enabled = false;
             this.numericUpDown_ticketssold.Location = new System.Drawing.Point(355, 168);
+            this.numericUpDown_ticketssold.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
             this.numericUpDown_ticketssold.Name = "numericUpDown_ticketssold";
             this.numericUpDown_ticketssold.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown_ticketssold.TabIndex = 39;
@@ -505,7 +510,6 @@ namespace PlanFest
             this.label18.Size = new System.Drawing.Size(59, 20);
             this.label18.TabIndex = 38;
             this.label18.Text = "Tickets";
-            this.label18.Click += new System.EventHandler(this.label18_Click);
             // 
             // label17
             // 
@@ -645,19 +649,18 @@ namespace PlanFest
             this.label10.Size = new System.Drawing.Size(72, 20);
             this.label10.TabIndex = 24;
             this.label10.Text = "Manager";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
-            // comboBox1
+            // comboBox_promotertype
             // 
-            this.comboBox1.Enabled = false;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBox_promotertype.Enabled = false;
+            this.comboBox_promotertype.FormattingEnabled = true;
+            this.comboBox_promotertype.Items.AddRange(new object[] {
             "Nacional",
             "Internacional"});
-            this.comboBox1.Location = new System.Drawing.Point(191, 434);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 23;
+            this.comboBox_promotertype.Location = new System.Drawing.Point(191, 434);
+            this.comboBox_promotertype.Name = "comboBox_promotertype";
+            this.comboBox_promotertype.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_promotertype.TabIndex = 23;
             // 
             // label9
             // 
@@ -668,7 +671,6 @@ namespace PlanFest
             this.label9.Size = new System.Drawing.Size(31, 13);
             this.label9.TabIndex = 22;
             this.label9.Text = "Type";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // textBox_promoteridnumber
             // 
@@ -687,7 +689,6 @@ namespace PlanFest
             this.label8.Size = new System.Drawing.Size(100, 13);
             this.label8.TabIndex = 20;
             this.label8.Text = "Personal ID number";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // textBox_promotertelephone
             // 
@@ -706,7 +707,6 @@ namespace PlanFest
             this.label7.Size = new System.Drawing.Size(58, 13);
             this.label7.TabIndex = 18;
             this.label7.Text = "Telephone";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // comboBox_promotersex
             // 
@@ -748,7 +748,6 @@ namespace PlanFest
             this.label5.Size = new System.Drawing.Size(32, 13);
             this.label5.TabIndex = 14;
             this.label5.Text = "Email";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // textBox_promotername
             // 
@@ -761,6 +760,7 @@ namespace PlanFest
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Enabled = false;
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label4.Location = new System.Drawing.Point(16, 255);
             this.label4.Name = "label4";
@@ -832,7 +832,6 @@ namespace PlanFest
             this.label_festivalid.Size = new System.Drawing.Size(57, 13);
             this.label_festivalid.TabIndex = 5;
             this.label_festivalid.Text = "[festival id]";
-            this.label_festivalid.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -843,7 +842,6 @@ namespace PlanFest
             this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "End Date";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // datepicker_festivalend
             // 
@@ -864,7 +862,6 @@ namespace PlanFest
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Start Date";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // datepicker_festivalbegin
             // 
@@ -906,7 +903,6 @@ namespace PlanFest
             this.label1.Size = new System.Drawing.Size(98, 25);
             this.label1.TabIndex = 9;
             this.label1.Text = "Festivals";
-            this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // btn_addfestival
             // 
@@ -932,11 +928,9 @@ namespace PlanFest
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBox_festivalsview.FormattingEnabled = true;
             this.listBox_festivalsview.Location = new System.Drawing.Point(17, 140);
-            this.listBox_festivalsview.MultiColumn = true;
             this.listBox_festivalsview.Name = "listBox_festivalsview";
             this.listBox_festivalsview.Size = new System.Drawing.Size(708, 277);
-            this.listBox_festivalsview.TabIndex = 0;
-            this.listBox_festivalsview.SelectedIndexChanged += new System.EventHandler(this.listBox_festivalsview_SelectedIndexChanged);
+            this.listBox_festivalsview.TabIndex = 1;
             // 
             // btn_openfestival
             // 
@@ -1037,7 +1031,7 @@ namespace PlanFest
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboBox_promotersex;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox_promotertype;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox comboBox_managertype;
