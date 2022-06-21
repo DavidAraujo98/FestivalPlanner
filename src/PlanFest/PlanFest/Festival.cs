@@ -44,5 +44,10 @@ namespace PlanFest
             this.meals = meals;
             this.stages = stages;
         }
+
+        public override String ToString()
+        {
+            return id + "\t" + name;
+        }
     }
 }
