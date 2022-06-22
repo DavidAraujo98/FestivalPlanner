@@ -14,6 +14,9 @@ namespace PlanFest
     public partial class PlanFest : Form
     {
         private SqlConnection CN;
+        private Festival festival = new Festival();
+        private Promoter promoter = new Promoter();
+        private Manager manager = new Manager();
         public PlanFest()
         {
             InitializeComponent();
@@ -25,6 +28,23 @@ namespace PlanFest
             form_login.Show();
         }
 
+        private void hideAll()
+        {
+            
+            foreach (var pnl in Controls.OfType<Panel>())
+            {
+                pnl.Hide();
+            }
+        }
+
+        private void openPanel(Panel e)
+        {
+            hideAll();
+            panel_base.Show();
+            e.BringToFront();
+            e.Show();
+        }
+
         private void btn_connect_Click(object sender, EventArgs e)
         {
             bool temp = TestDBConnection();
@@ -32,10 +52,8 @@ namespace PlanFest
             if (temp)
             {
                 loadFestivals();
-                hideAll();
-                panel_base.Show();
-                panel_festivalslist.Show();
-                panel_festival.Hide();
+                openPanel(panel_openinglist);
+                
             }
         }
 
@@ -83,7 +101,7 @@ namespace PlanFest
 
         private void loadFestivals()
         {
-            if (!TestDBConnection())
+            if (!verifySGBDConnection())
                 return;
 
             SqlCommand cmd = new SqlCommand("SELECT * FROM FP.Evento", CN);
@@ -92,29 +110,204 @@ namespace PlanFest
 
             while (reader.Read())
             {
-                Festival F = new Festival();
-                F.name = reader["nome"].ToString();
-                F.id = reader["id"].ToString();
-                F.dateBegin = reader["dataInicio"].ToString();
-                F.dateEnd = reader["dataFim"].ToString();
-                F.nDays = (int) reader["nDias"];
-                F.nTickets = (int)reader["nBilhetes"];
+                Festival F = new Festival(
+                    name: reader["nome"].ToString(),
+                    id: reader["id"].ToString(),
+                    dateBegin: reader["dataInicio"].ToString(),
+                    dateEnd: reader["dataFim"].ToString(),
+                    dateProposal: reader["dataProposta"].ToString(),
+                    nDays: Int32.Parse(reader["nDias"].ToString()),
+                    nTickets: Int32.Parse(reader["nBilhetes"].ToString())
+                    );
+                
                 listBox_festivalsview.Items.Add(F);
-                Console.WriteLine(F.name);
             }
-
-            if(listBox_festivalsview.Items.Count > 0)
-                btn_openfestival.Enabled = true;
 
             CN.Close();
         }
 
-        private void menu_Paint(object sender, PaintEventArgs e)
+        private void listBox_festivalsview_SelectChange(object sender, EventArgs e)
         {
-
+            if (listBox_festivalsview.SelectedIndex >= 0)
+                btn_openfestival.Enabled = true;
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void btn_openfestival_Click(object sender, EventArgs e)
+        {
+            openPanel(panel_festival);
+
+            if (!verifySGBDConnection())
+                return;
+
+            this.festival = (Festival)listBox_festivalsview.Items[listBox_festivalsview.SelectedIndex];
+            updateFestivalView();
+            hideAll();
+            panel_base.Show();
+            panel_festival.Show();
+        }
+
+        private void readFestivalView()
+        {
+            DateTime start = datepicker_festivalbegin.Value;
+            DateTime end = datepicker_festivalend.Value;
+            int numdias = (int)(end - start).TotalDays;
+
+            this.festival = new Festival(
+                id: label_festivalid.Text,
+                name: textBox_festivalname.Text,
+                dateBegin: datepicker_festivalbegin.Value.ToString(),
+                dateEnd: datepicker_festivalend.Value.ToString(),
+                dateProposal: datepicker_proposal.Value.ToString(),
+                nDays: numdias,
+                nTickets: (int)numericUpDown_ticketssold.Value,
+                promoter: this.promoter,
+                manager: this.manager
+                );
+        }
+        private void updateFestivalView()
+        {
+            textBox_festivalname.Text = this.festival.name;
+            datepicker_festivalbegin.Value = DateTime.Parse(this.festival.dateBegin);
+            datepicker_festivalend.Value = DateTime.Parse(this.festival.dateEnd);
+            datepicker_proposal.Value = DateTime.Parse(this.festival.dateProposal);
+            numericUpDown_ticketssold.Value = this.festival.nTickets;
+            label_festivalid.Text = this.festival.id.ToString();
+            loadPromoter();
+            loadManager();
+        }
+
+        private void loadPromoter()
+        {
+            if (!verifySGBDConnection())
+                return;
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = CN;
+            cmd.CommandText = "SELECT Pessoa.* FROM FP.Evento INNER JOIN (SELECT FP.Promotor.tipo, FP.Pessoa.* FROM FP.Promotor INNER JOIN FP.Pessoa ON FP.Promotor.cc = FP.Pessoa.cc) AS Pessoa ON FP.Evento.cc_promotor = Pessoa.cc WHERE FP.Evento.id = @festivalID";
+            cmd.Parameters.AddWithValue("@festivalID", this.festival.id);
+            SqlDataReader reader = cmd.ExecuteReader();
+            
+            reader.Read();
+            this.promoter.name = promoter_name.Text = reader["nome"].ToString();
+            this.promoter.email = promoter_email.Text = reader["email"].ToString();
+            this.promoter.sex = promoter_sex.Text = reader["sexo"].ToString();
+            this.promoter.telephone = promoter_phone.Text = reader["telefone"].ToString();
+            this.promoter.cc = textBox_promoter_cc.Text = reader["cc"].ToString();
+            this.promoter.type = promoter_type.Text = reader["tipo"].ToString();
+            this.promoter.festival = this.festival;
+
+
+            CN.Close();
+        }
+        private void loadManager()
+        {
+            if (!verifySGBDConnection())
+                return;
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = CN;
+            cmd.CommandText = "SELECT Pessoa.* FROM FP.Evento INNER JOIN (SELECT FP.Manager.tipo, FP.Pessoa.* FROM FP.Manager INNER JOIN FP.Pessoa ON FP.Manager.cc = FP.Pessoa.cc) AS Pessoa ON FP.Evento.cc_manager = Pessoa.cc WHERE FP.Evento.id = @festivalID";
+            cmd.Parameters.AddWithValue("@festivalID", this.festival.id);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            reader.Read();
+            this.manager.name = manager_name.Text = reader["nome"].ToString();
+            this.manager.email = manager_email.Text = reader["email"].ToString();
+            this.manager.sex = manager_sex.Text = reader["sexo"].ToString();
+            this.manager.telephone = manager_phone.Text = reader["telefone"].ToString();
+            this.manager.cc = textBox_manager_cc.Text = reader["cc"].ToString();
+            this.manager.type = manager_type.Text = reader["tipo"].ToString();
+            this.manager.festival = this.festival;
+
+            CN.Close();
+        }
+        private void btn_editfestival_Click(object sender, EventArgs e)
+        {
+            if (btn_editfestival.Text == "Edit")
+            {
+                btn_editfestival.Text = "Save";
+                textBox_festivalname.Enabled = true;
+                datepicker_festivalbegin.Enabled = true;
+                datepicker_festivalend.Enabled = true;
+                datepicker_festivalend.Enabled = true;
+                datepicker_proposal.Enabled = true;
+                numericUpDown_ticketssold.Enabled = true;
+                textBox_promoter_cc.Enabled = true;
+                textBox_manager_cc.Enabled = true;
+            }
+            else
+            {
+                btn_editfestival.Text = "Edit";
+                textBox_festivalname.Enabled = false;
+                datepicker_festivalbegin.Enabled = false;
+                datepicker_festivalend.Enabled = false;
+                datepicker_festivalend.Enabled = false;
+                datepicker_proposal.Enabled = false;
+                numericUpDown_ticketssold.Enabled = false;
+                textBox_promoter_cc.Enabled = false;
+                textBox_manager_cc.Enabled = false;
+
+                readFestivalView();
+
+                if (!verifySGBDConnection())
+                    return;
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = CN;
+                cmd.CommandText = "EXEC alter_evento @festivalID," + "@festival_name," + "@num_dias,"+"@begin_date,"+"@end_date,"+"@num_tickets,"+"@proposal_date,"+"@promoter_cc,"+"@manager_cc;";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@festivalID", this.festival.id);
+                cmd.Parameters.AddWithValue("@festival_name", this.festival.name);
+                cmd.Parameters.AddWithValue("@num_dias", this.festival.nDays);
+                cmd.Parameters.AddWithValue("@begin_date", this.festival.dateBegin);
+                cmd.Parameters.AddWithValue("@end_date", this.festival.dateEnd);
+                cmd.Parameters.AddWithValue("@num_tickets", this.festival.nTickets);
+                cmd.Parameters.AddWithValue("@proposal_date", this.festival.dateProposal);
+                cmd.Parameters.AddWithValue("@promoter_cc", this.festival.promoter.cc);
+                cmd.Parameters.AddWithValue("@manager_cc", this.festival.manager.cc);
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    CN.Close();
+                    updateFestivalView();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Failed to update festival in database. \n ERROR MESSAGE: \n" + ex.Message);
+                }
+                
+            }
+        }
+
+        private void btn_deletefestival_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to delete " + this.festival.name + " event ?", "Connection Test", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                if (!verifySGBDConnection())
+                    return;
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = CN;
+                cmd.CommandText = "EXEC delete_evento_byId @festivalID;";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@festivalID", this.festival.id);
+                try
+                {
+                    Console.WriteLine(cmd.ExecuteNonQuery());
+                    CN.Close();
+                    loadFestivals();
+                    openPanel(panel_openinglist);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Failed to delete festival in database. \n ERROR MESSAGE: \n" + ex.Message);
+                }
+            }
+        }
+
+        private void menu_Paint(object sender, PaintEventArgs e)
         {
 
         }
@@ -144,80 +337,7 @@ namespace PlanFest
 
         }
         
-        private void hideAll()
-        {
-
-            foreach (var pnl in Controls.OfType<Panel>())
-            {
-                pnl.Hide();
-            }
-        }
-
-        private void btn_openfestival_Click(object sender, EventArgs e)
-        {
-            if (!verifySGBDConnection())
-                return;
-
-            Festival festival = new Festival();
-            festival = (Festival)listBox_festivalsview.Items[listBox_festivalsview.SelectedIndex];
-            textBox_festivalname.Text = festival.name;
-            datepicker_festivalbegin.Value = DateTime.Parse(festival.dateBegin);
-            datepicker_festivalend.Value = DateTime.Parse(festival.dateEnd);
-            numericUpDown_ticketssold.Value = festival.nTickets;
-            label_festivalid.Text = festival.id;
-
-            loadPromoter(Int32.Parse(festival.id));
-            loadManager(Int32.Parse(festival.id));
-
-            hideAll();
-            panel_base.Show();
-            panel_festival.Show();
-        }
-
-        private void loadPromoter(int id)
-        {
-            if (!verifySGBDConnection())
-                return;
-
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = CN;
-            cmd.CommandText = "SELECT Pessoa.* FROM FP.Evento INNER JOIN (SELECT FP.Promotor.tipo, FP.Pessoa.* FROM FP.Promotor INNER JOIN FP.Pessoa ON FP.Promotor.cc = FP.Pessoa.cc) AS Pessoa ON FP.Evento.cc_promotor = Pessoa.cc WHERE FP.Evento.id = @festivalID";
-            cmd.Parameters.AddWithValue("@festivalID", id);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            reader.Read();
-            textBox_promotername.Text = reader["nome"].ToString();
-            textBox_promoteremail.Text = reader["email"].ToString();
-            comboBox_promotersex.Text = reader["sexo"].ToString();
-            textBox_promotertelephone.Text = reader["telefone"].ToString();
-            textBox_promoteridnumber.Text = reader["cc"].ToString();
-            comboBox_promotertype.Text = reader["tipo"].ToString();
-
-            CN.Close();
-        }
-
-        private void loadManager(int id)
-        {
-            if (!verifySGBDConnection())
-                return;
-
-
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = CN;
-            cmd.CommandText = "SELECT Pessoa.* FROM FP.Evento INNER JOIN (SELECT FP.Manager.tipo, FP.Pessoa.* FROM FP.Manager INNER JOIN FP.Pessoa ON FP.Manager.cc = FP.Pessoa.cc) AS Pessoa ON FP.Evento.cc_manager = Pessoa.cc WHERE FP.Evento.id = @festivalID";
-            cmd.Parameters.AddWithValue("@festivalID", id);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            reader.Read();
-            textBox_managername.Text = reader["nome"].ToString();
-            textBox_manageremail.Text = reader["email"].ToString();
-            comboBox_managersex.Text = reader["sexo"].ToString();
-            textBox_managertelephone.Text = reader["telefone"].ToString();
-            textBox_manageridnumber.Text = reader["cc"].ToString();
-            comboBox_managertype.Text = reader["tipo"].ToString();
-
-            CN.Close();
-        }
+        
 
         private void button1_Click_2(object sender, EventArgs e)
         {
@@ -234,14 +354,16 @@ namespace PlanFest
 
         }
 
-        private void btn_editfestival_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void datepicker_festivalend_ValueChanged(object sender, EventArgs e)
         {
 
         }
+
+        private void panel_openinglist_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        
     }
 }

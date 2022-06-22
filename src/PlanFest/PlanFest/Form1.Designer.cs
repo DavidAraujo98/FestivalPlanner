@@ -52,36 +52,37 @@ namespace PlanFest
             this.btn_meals = new System.Windows.Forms.Button();
             this.btn_staff = new System.Windows.Forms.Button();
             this.panel_base = new System.Windows.Forms.Panel();
-            this.panel_festivalslist = new System.Windows.Forms.Panel();
             this.panel_festival = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.datepicker_proposal = new System.Windows.Forms.DateTimePicker();
+            this.textBox_manager_cc = new System.Windows.Forms.TextBox();
+            this.textBox_promoter_cc = new System.Windows.Forms.TextBox();
+            this.manager_sex = new System.Windows.Forms.Label();
+            this.manager_type = new System.Windows.Forms.Label();
+            this.manager_phone = new System.Windows.Forms.Label();
+            this.manager_email = new System.Windows.Forms.Label();
+            this.manager_name = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.promoter_sex = new System.Windows.Forms.Label();
+            this.promoter_type = new System.Windows.Forms.Label();
+            this.promoter_phone = new System.Windows.Forms.Label();
+            this.promoter_email = new System.Windows.Forms.Label();
+            this.promoter_name = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.numericUpDown_ticketssold = new System.Windows.Forms.NumericUpDown();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.comboBox_managertype = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBox_manageridnumber = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.textBox_managertelephone = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.comboBox_managersex = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox_manageremail = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox_managername = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.comboBox_promotertype = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox_promoteridnumber = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox_promotertelephone = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox_promotersex = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox_promoteremail = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox_promotername = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox_festivalname = new System.Windows.Forms.TextBox();
             this.label_promotername = new System.Windows.Forms.Label();
@@ -93,10 +94,11 @@ namespace PlanFest
             this.label2 = new System.Windows.Forms.Label();
             this.datepicker_festivalbegin = new System.Windows.Forms.DateTimePicker();
             this.btn_editfestival = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btn_addfestival = new System.Windows.Forms.Button();
-            this.listBox_festivalsview = new System.Windows.Forms.ListBox();
+            this.panel_openinglist = new System.Windows.Forms.Panel();
             this.btn_openfestival = new System.Windows.Forms.Button();
+            this.btn_addfestival = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.listBox_festivalsview = new System.Windows.Forms.ListBox();
             this.server.SuspendLayout();
             this.user.SuspendLayout();
             this.password.SuspendLayout();
@@ -104,9 +106,9 @@ namespace PlanFest
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.panel_base.SuspendLayout();
-            this.panel_festivalslist.SuspendLayout();
             this.panel_festival.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_ticketssold)).BeginInit();
+            this.panel_openinglist.SuspendLayout();
             this.SuspendLayout();
             // 
             // server_input
@@ -291,7 +293,6 @@ namespace PlanFest
             this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.logo.TabIndex = 0;
             this.logo.TabStop = false;
-            this.logo.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // btn_festivals
             // 
@@ -407,8 +408,9 @@ namespace PlanFest
             // 
             // panel_base
             // 
-            this.panel_base.Controls.Add(this.panel_festivalslist);
             this.panel_base.Controls.Add(this.menu);
+            this.panel_base.Controls.Add(this.panel_festival);
+            this.panel_base.Controls.Add(this.panel_openinglist);
             this.panel_base.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_base.Location = new System.Drawing.Point(0, 0);
             this.panel_base.Name = "panel_base";
@@ -416,49 +418,41 @@ namespace PlanFest
             this.panel_base.TabIndex = 7;
             this.panel_base.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_home_Paint);
             // 
-            // panel_festivalslist
-            // 
-            this.panel_festivalslist.Controls.Add(this.panel_festival);
-            this.panel_festivalslist.Controls.Add(this.label1);
-            this.panel_festivalslist.Controls.Add(this.btn_addfestival);
-            this.panel_festivalslist.Controls.Add(this.listBox_festivalsview);
-            this.panel_festivalslist.Controls.Add(this.btn_openfestival);
-            this.panel_festivalslist.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_festivalslist.Location = new System.Drawing.Point(173, 0);
-            this.panel_festivalslist.Name = "panel_festivalslist";
-            this.panel_festivalslist.Size = new System.Drawing.Size(737, 542);
-            this.panel_festivalslist.TabIndex = 7;
-            // 
             // panel_festival
             // 
+            this.panel_festival.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel_festival.Controls.Add(this.label11);
+            this.panel_festival.Controls.Add(this.datepicker_proposal);
+            this.panel_festival.Controls.Add(this.textBox_manager_cc);
+            this.panel_festival.Controls.Add(this.textBox_promoter_cc);
+            this.panel_festival.Controls.Add(this.manager_sex);
+            this.panel_festival.Controls.Add(this.manager_type);
+            this.panel_festival.Controls.Add(this.manager_phone);
+            this.panel_festival.Controls.Add(this.manager_email);
+            this.panel_festival.Controls.Add(this.manager_name);
+            this.panel_festival.Controls.Add(this.label20);
+            this.panel_festival.Controls.Add(this.label21);
+            this.panel_festival.Controls.Add(this.label22);
+            this.panel_festival.Controls.Add(this.label23);
+            this.panel_festival.Controls.Add(this.label24);
+            this.panel_festival.Controls.Add(this.label25);
+            this.panel_festival.Controls.Add(this.promoter_sex);
+            this.panel_festival.Controls.Add(this.promoter_type);
+            this.panel_festival.Controls.Add(this.promoter_phone);
+            this.panel_festival.Controls.Add(this.promoter_email);
+            this.panel_festival.Controls.Add(this.promoter_name);
             this.panel_festival.Controls.Add(this.label19);
             this.panel_festival.Controls.Add(this.numericUpDown_ticketssold);
             this.panel_festival.Controls.Add(this.label18);
             this.panel_festival.Controls.Add(this.label17);
-            this.panel_festival.Controls.Add(this.comboBox_managertype);
-            this.panel_festival.Controls.Add(this.label16);
-            this.panel_festival.Controls.Add(this.textBox_manageridnumber);
-            this.panel_festival.Controls.Add(this.label15);
-            this.panel_festival.Controls.Add(this.textBox_managertelephone);
-            this.panel_festival.Controls.Add(this.label14);
-            this.panel_festival.Controls.Add(this.comboBox_managersex);
-            this.panel_festival.Controls.Add(this.label13);
-            this.panel_festival.Controls.Add(this.textBox_manageremail);
-            this.panel_festival.Controls.Add(this.label12);
-            this.panel_festival.Controls.Add(this.textBox_managername);
-            this.panel_festival.Controls.Add(this.label11);
             this.panel_festival.Controls.Add(this.label10);
-            this.panel_festival.Controls.Add(this.comboBox_promotertype);
             this.panel_festival.Controls.Add(this.label9);
-            this.panel_festival.Controls.Add(this.textBox_promoteridnumber);
             this.panel_festival.Controls.Add(this.label8);
-            this.panel_festival.Controls.Add(this.textBox_promotertelephone);
             this.panel_festival.Controls.Add(this.label7);
-            this.panel_festival.Controls.Add(this.comboBox_promotersex);
             this.panel_festival.Controls.Add(this.label6);
-            this.panel_festival.Controls.Add(this.textBox_promoteremail);
             this.panel_festival.Controls.Add(this.label5);
-            this.panel_festival.Controls.Add(this.textBox_promotername);
             this.panel_festival.Controls.Add(this.label4);
             this.panel_festival.Controls.Add(this.textBox_festivalname);
             this.panel_festival.Controls.Add(this.label_promotername);
@@ -470,27 +464,253 @@ namespace PlanFest
             this.panel_festival.Controls.Add(this.label2);
             this.panel_festival.Controls.Add(this.datepicker_festivalbegin);
             this.panel_festival.Controls.Add(this.btn_editfestival);
-            this.panel_festival.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_festival.Location = new System.Drawing.Point(0, 0);
+            this.panel_festival.Location = new System.Drawing.Point(176, 3);
             this.panel_festival.Name = "panel_festival";
-            this.panel_festival.Size = new System.Drawing.Size(737, 542);
+            this.panel_festival.Size = new System.Drawing.Size(731, 539);
             this.panel_festival.TabIndex = 10;
+            this.panel_festival.UseWaitCursor = true;
             this.panel_festival.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_festival_Paint);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label11.Location = new System.Drawing.Point(335, 151);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(74, 13);
+            this.label11.TabIndex = 62;
+            this.label11.Text = "Proposal Date";
+            this.label11.UseWaitCursor = true;
+            // 
+            // datepicker_proposal
+            // 
+            this.datepicker_proposal.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.datepicker_proposal.Enabled = false;
+            this.datepicker_proposal.Location = new System.Drawing.Point(338, 168);
+            this.datepicker_proposal.Name = "datepicker_proposal";
+            this.datepicker_proposal.Size = new System.Drawing.Size(133, 20);
+            this.datepicker_proposal.TabIndex = 61;
+            this.datepicker_proposal.UseWaitCursor = true;
+            // 
+            // textBox_manager_cc
+            // 
+            this.textBox_manager_cc.Enabled = false;
+            this.textBox_manager_cc.Location = new System.Drawing.Point(461, 372);
+            this.textBox_manager_cc.Name = "textBox_manager_cc";
+            this.textBox_manager_cc.Size = new System.Drawing.Size(158, 20);
+            this.textBox_manager_cc.TabIndex = 60;
+            this.textBox_manager_cc.UseWaitCursor = true;
+            // 
+            // textBox_promoter_cc
+            // 
+            this.textBox_promoter_cc.Enabled = false;
+            this.textBox_promoter_cc.Location = new System.Drawing.Point(123, 372);
+            this.textBox_promoter_cc.Name = "textBox_promoter_cc";
+            this.textBox_promoter_cc.Size = new System.Drawing.Size(158, 20);
+            this.textBox_promoter_cc.TabIndex = 59;
+            this.textBox_promoter_cc.UseWaitCursor = true;
+            // 
+            // manager_sex
+            // 
+            this.manager_sex.AutoSize = true;
+            this.manager_sex.Enabled = false;
+            this.manager_sex.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.manager_sex.Location = new System.Drawing.Point(386, 347);
+            this.manager_sex.Name = "manager_sex";
+            this.manager_sex.Size = new System.Drawing.Size(70, 13);
+            this.manager_sex.TabIndex = 58;
+            this.manager_sex.Text = "manager_sex";
+            this.manager_sex.UseWaitCursor = true;
+            // 
+            // manager_type
+            // 
+            this.manager_type.AutoSize = true;
+            this.manager_type.Enabled = false;
+            this.manager_type.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.manager_type.Location = new System.Drawing.Point(392, 321);
+            this.manager_type.Name = "manager_type";
+            this.manager_type.Size = new System.Drawing.Size(74, 13);
+            this.manager_type.TabIndex = 56;
+            this.manager_type.Text = "manager_type";
+            this.manager_type.UseWaitCursor = true;
+            // 
+            // manager_phone
+            // 
+            this.manager_phone.AutoSize = true;
+            this.manager_phone.Enabled = false;
+            this.manager_phone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.manager_phone.Location = new System.Drawing.Point(419, 300);
+            this.manager_phone.Name = "manager_phone";
+            this.manager_phone.Size = new System.Drawing.Size(84, 13);
+            this.manager_phone.TabIndex = 55;
+            this.manager_phone.Text = "manager_phone";
+            this.manager_phone.UseWaitCursor = true;
+            // 
+            // manager_email
+            // 
+            this.manager_email.AutoSize = true;
+            this.manager_email.Enabled = false;
+            this.manager_email.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.manager_email.Location = new System.Drawing.Point(393, 278);
+            this.manager_email.Name = "manager_email";
+            this.manager_email.Size = new System.Drawing.Size(78, 13);
+            this.manager_email.TabIndex = 54;
+            this.manager_email.Text = "manager_email";
+            this.manager_email.UseWaitCursor = true;
+            // 
+            // manager_name
+            // 
+            this.manager_name.AutoSize = true;
+            this.manager_name.Enabled = false;
+            this.manager_name.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.manager_name.Location = new System.Drawing.Point(396, 257);
+            this.manager_name.Name = "manager_name";
+            this.manager_name.Size = new System.Drawing.Size(80, 13);
+            this.manager_name.TabIndex = 53;
+            this.manager_name.Text = "manager_name";
+            this.manager_name.UseWaitCursor = true;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label20.Location = new System.Drawing.Point(355, 321);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(31, 13);
+            this.label20.TabIndex = 52;
+            this.label20.Text = "Type";
+            this.label20.UseWaitCursor = true;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label21.Location = new System.Drawing.Point(355, 375);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(100, 13);
+            this.label21.TabIndex = 51;
+            this.label21.Text = "Personal ID number";
+            this.label21.UseWaitCursor = true;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label22.Location = new System.Drawing.Point(355, 300);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(58, 13);
+            this.label22.TabIndex = 50;
+            this.label22.Text = "Telephone";
+            this.label22.UseWaitCursor = true;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label23.Location = new System.Drawing.Point(355, 347);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(25, 13);
+            this.label23.TabIndex = 49;
+            this.label23.Text = "Sex";
+            this.label23.UseWaitCursor = true;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label24.Location = new System.Drawing.Point(355, 278);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(32, 13);
+            this.label24.TabIndex = 48;
+            this.label24.Text = "Email";
+            this.label24.UseWaitCursor = true;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label25.Location = new System.Drawing.Point(355, 257);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(35, 13);
+            this.label25.TabIndex = 47;
+            this.label25.Text = "Name";
+            this.label25.UseWaitCursor = true;
+            // 
+            // promoter_sex
+            // 
+            this.promoter_sex.AutoSize = true;
+            this.promoter_sex.Enabled = false;
+            this.promoter_sex.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.promoter_sex.Location = new System.Drawing.Point(48, 347);
+            this.promoter_sex.Name = "promoter_sex";
+            this.promoter_sex.Size = new System.Drawing.Size(70, 13);
+            this.promoter_sex.TabIndex = 46;
+            this.promoter_sex.Text = "promoter_sex";
+            this.promoter_sex.UseWaitCursor = true;
+            // 
+            // promoter_type
+            // 
+            this.promoter_type.AutoSize = true;
+            this.promoter_type.Enabled = false;
+            this.promoter_type.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.promoter_type.Location = new System.Drawing.Point(51, 321);
+            this.promoter_type.Name = "promoter_type";
+            this.promoter_type.Size = new System.Drawing.Size(74, 13);
+            this.promoter_type.TabIndex = 44;
+            this.promoter_type.Text = "promoter_type";
+            this.promoter_type.UseWaitCursor = true;
+            // 
+            // promoter_phone
+            // 
+            this.promoter_phone.AutoSize = true;
+            this.promoter_phone.Enabled = false;
+            this.promoter_phone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.promoter_phone.Location = new System.Drawing.Point(78, 300);
+            this.promoter_phone.Name = "promoter_phone";
+            this.promoter_phone.Size = new System.Drawing.Size(84, 13);
+            this.promoter_phone.TabIndex = 43;
+            this.promoter_phone.Text = "promoter_phone";
+            this.promoter_phone.UseWaitCursor = true;
+            // 
+            // promoter_email
+            // 
+            this.promoter_email.AutoSize = true;
+            this.promoter_email.Enabled = false;
+            this.promoter_email.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.promoter_email.Location = new System.Drawing.Point(52, 278);
+            this.promoter_email.Name = "promoter_email";
+            this.promoter_email.Size = new System.Drawing.Size(78, 13);
+            this.promoter_email.TabIndex = 42;
+            this.promoter_email.Text = "promoter_email";
+            this.promoter_email.UseWaitCursor = true;
+            // 
+            // promoter_name
+            // 
+            this.promoter_name.AutoSize = true;
+            this.promoter_name.Enabled = false;
+            this.promoter_name.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.promoter_name.Location = new System.Drawing.Point(55, 257);
+            this.promoter_name.Name = "promoter_name";
+            this.promoter_name.Size = new System.Drawing.Size(80, 13);
+            this.promoter_name.TabIndex = 41;
+            this.promoter_name.Text = "promoter_name";
+            this.promoter_name.UseWaitCursor = true;
             // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label19.Location = new System.Drawing.Point(352, 151);
+            this.label19.Location = new System.Drawing.Point(496, 150);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(99, 13);
             this.label19.TabIndex = 40;
             this.label19.Text = "Total of tickets sold";
+            this.label19.UseWaitCursor = true;
             // 
             // numericUpDown_ticketssold
             // 
             this.numericUpDown_ticketssold.Enabled = false;
-            this.numericUpDown_ticketssold.Location = new System.Drawing.Point(355, 168);
+            this.numericUpDown_ticketssold.Location = new System.Drawing.Point(499, 167);
             this.numericUpDown_ticketssold.Maximum = new decimal(new int[] {
             99999999,
             0,
@@ -499,17 +719,19 @@ namespace PlanFest
             this.numericUpDown_ticketssold.Name = "numericUpDown_ticketssold";
             this.numericUpDown_ticketssold.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown_ticketssold.TabIndex = 39;
+            this.numericUpDown_ticketssold.UseWaitCursor = true;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
-            this.label18.Location = new System.Drawing.Point(351, 120);
+            this.label18.Location = new System.Drawing.Point(495, 115);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(59, 20);
             this.label18.TabIndex = 38;
             this.label18.Text = "Tickets";
+            this.label18.UseWaitCursor = true;
             // 
             // label17
             // 
@@ -521,123 +743,7 @@ namespace PlanFest
             this.label17.Size = new System.Drawing.Size(73, 20);
             this.label17.TabIndex = 37;
             this.label17.Text = "Calendar";
-            // 
-            // comboBox_managertype
-            // 
-            this.comboBox_managertype.Enabled = false;
-            this.comboBox_managertype.FormattingEnabled = true;
-            this.comboBox_managertype.Items.AddRange(new object[] {
-            "Nacional",
-            "Internacional"});
-            this.comboBox_managertype.Location = new System.Drawing.Point(527, 435);
-            this.comboBox_managertype.Name = "comboBox_managertype";
-            this.comboBox_managertype.Size = new System.Drawing.Size(121, 21);
-            this.comboBox_managertype.TabIndex = 36;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label16.Location = new System.Drawing.Point(524, 419);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(31, 13);
-            this.label16.TabIndex = 35;
-            this.label16.Text = "Type";
-            // 
-            // textBox_manageridnumber
-            // 
-            this.textBox_manageridnumber.Enabled = false;
-            this.textBox_manageridnumber.Location = new System.Drawing.Point(355, 435);
-            this.textBox_manageridnumber.Name = "textBox_manageridnumber";
-            this.textBox_manageridnumber.Size = new System.Drawing.Size(142, 20);
-            this.textBox_manageridnumber.TabIndex = 34;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label15.Location = new System.Drawing.Point(352, 418);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(100, 13);
-            this.label15.TabIndex = 33;
-            this.label15.Text = "Personal ID number";
-            // 
-            // textBox_managertelephone
-            // 
-            this.textBox_managertelephone.Enabled = false;
-            this.textBox_managertelephone.Location = new System.Drawing.Point(506, 371);
-            this.textBox_managertelephone.Name = "textBox_managertelephone";
-            this.textBox_managertelephone.Size = new System.Drawing.Size(142, 20);
-            this.textBox_managertelephone.TabIndex = 32;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label14.Location = new System.Drawing.Point(503, 354);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(58, 13);
-            this.label14.TabIndex = 31;
-            this.label14.Text = "Telephone";
-            // 
-            // comboBox_managersex
-            // 
-            this.comboBox_managersex.Enabled = false;
-            this.comboBox_managersex.FormattingEnabled = true;
-            this.comboBox_managersex.Items.AddRange(new object[] {
-            "Male",
-            "Female",
-            "Other"});
-            this.comboBox_managersex.Location = new System.Drawing.Point(355, 370);
-            this.comboBox_managersex.Name = "comboBox_managersex";
-            this.comboBox_managersex.Size = new System.Drawing.Size(121, 21);
-            this.comboBox_managersex.TabIndex = 30;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label13.Location = new System.Drawing.Point(352, 354);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(25, 13);
-            this.label13.TabIndex = 29;
-            this.label13.Text = "Sex";
-            // 
-            // textBox_manageremail
-            // 
-            this.textBox_manageremail.Enabled = false;
-            this.textBox_manageremail.Location = new System.Drawing.Point(355, 321);
-            this.textBox_manageremail.Name = "textBox_manageremail";
-            this.textBox_manageremail.Size = new System.Drawing.Size(293, 20);
-            this.textBox_manageremail.TabIndex = 28;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Location = new System.Drawing.Point(352, 305);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(32, 13);
-            this.label12.TabIndex = 27;
-            this.label12.Text = "Email";
-            // 
-            // textBox_managername
-            // 
-            this.textBox_managername.Enabled = false;
-            this.textBox_managername.Location = new System.Drawing.Point(355, 271);
-            this.textBox_managername.Name = "textBox_managername";
-            this.textBox_managername.Size = new System.Drawing.Size(293, 20);
-            this.textBox_managername.TabIndex = 26;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label11.Location = new System.Drawing.Point(352, 255);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(35, 13);
-            this.label11.TabIndex = 25;
-            this.label11.Text = "Name";
+            this.label17.UseWaitCursor = true;
             // 
             // label10
             // 
@@ -649,124 +755,73 @@ namespace PlanFest
             this.label10.Size = new System.Drawing.Size(72, 20);
             this.label10.TabIndex = 24;
             this.label10.Text = "Manager";
-            // 
-            // comboBox_promotertype
-            // 
-            this.comboBox_promotertype.Enabled = false;
-            this.comboBox_promotertype.FormattingEnabled = true;
-            this.comboBox_promotertype.Items.AddRange(new object[] {
-            "Nacional",
-            "Internacional"});
-            this.comboBox_promotertype.Location = new System.Drawing.Point(191, 434);
-            this.comboBox_promotertype.Name = "comboBox_promotertype";
-            this.comboBox_promotertype.Size = new System.Drawing.Size(121, 21);
-            this.comboBox_promotertype.TabIndex = 23;
+            this.label10.UseWaitCursor = true;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(188, 418);
+            this.label9.Location = new System.Drawing.Point(14, 321);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(31, 13);
             this.label9.TabIndex = 22;
             this.label9.Text = "Type";
-            // 
-            // textBox_promoteridnumber
-            // 
-            this.textBox_promoteridnumber.Enabled = false;
-            this.textBox_promoteridnumber.Location = new System.Drawing.Point(19, 434);
-            this.textBox_promoteridnumber.Name = "textBox_promoteridnumber";
-            this.textBox_promoteridnumber.Size = new System.Drawing.Size(142, 20);
-            this.textBox_promoteridnumber.TabIndex = 21;
+            this.label9.UseWaitCursor = true;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label8.Location = new System.Drawing.Point(16, 417);
+            this.label8.Location = new System.Drawing.Point(17, 375);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(100, 13);
             this.label8.TabIndex = 20;
             this.label8.Text = "Personal ID number";
-            // 
-            // textBox_promotertelephone
-            // 
-            this.textBox_promotertelephone.Enabled = false;
-            this.textBox_promotertelephone.Location = new System.Drawing.Point(170, 372);
-            this.textBox_promotertelephone.Name = "textBox_promotertelephone";
-            this.textBox_promotertelephone.Size = new System.Drawing.Size(142, 20);
-            this.textBox_promotertelephone.TabIndex = 19;
+            this.label8.UseWaitCursor = true;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(167, 355);
+            this.label7.Location = new System.Drawing.Point(14, 300);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 13);
             this.label7.TabIndex = 18;
             this.label7.Text = "Telephone";
-            // 
-            // comboBox_promotersex
-            // 
-            this.comboBox_promotersex.Enabled = false;
-            this.comboBox_promotersex.FormattingEnabled = true;
-            this.comboBox_promotersex.Items.AddRange(new object[] {
-            "Male",
-            "Female",
-            "Other"});
-            this.comboBox_promotersex.Location = new System.Drawing.Point(19, 371);
-            this.comboBox_promotersex.Name = "comboBox_promotersex";
-            this.comboBox_promotersex.Size = new System.Drawing.Size(121, 21);
-            this.comboBox_promotersex.TabIndex = 17;
+            this.label7.UseWaitCursor = true;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(16, 355);
+            this.label6.Location = new System.Drawing.Point(17, 347);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(25, 13);
             this.label6.TabIndex = 16;
             this.label6.Text = "Sex";
-            // 
-            // textBox_promoteremail
-            // 
-            this.textBox_promoteremail.Enabled = false;
-            this.textBox_promoteremail.Location = new System.Drawing.Point(19, 321);
-            this.textBox_promoteremail.Name = "textBox_promoteremail";
-            this.textBox_promoteremail.Size = new System.Drawing.Size(293, 20);
-            this.textBox_promoteremail.TabIndex = 15;
+            this.label6.UseWaitCursor = true;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(16, 305);
+            this.label5.Location = new System.Drawing.Point(14, 278);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(32, 13);
             this.label5.TabIndex = 14;
             this.label5.Text = "Email";
-            // 
-            // textBox_promotername
-            // 
-            this.textBox_promotername.Enabled = false;
-            this.textBox_promotername.Location = new System.Drawing.Point(19, 271);
-            this.textBox_promotername.Name = "textBox_promotername";
-            this.textBox_promotername.Size = new System.Drawing.Size(293, 20);
-            this.textBox_promotername.TabIndex = 13;
+            this.label5.UseWaitCursor = true;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Enabled = false;
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(16, 255);
+            this.label4.Location = new System.Drawing.Point(14, 257);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 12;
             this.label4.Text = "Name";
+            this.label4.UseWaitCursor = true;
             // 
             // textBox_festivalname
             // 
@@ -777,6 +832,7 @@ namespace PlanFest
             this.textBox_festivalname.Name = "textBox_festivalname";
             this.textBox_festivalname.Size = new System.Drawing.Size(708, 38);
             this.textBox_festivalname.TabIndex = 11;
+            this.textBox_festivalname.UseWaitCursor = true;
             // 
             // label_promotername
             // 
@@ -788,6 +844,7 @@ namespace PlanFest
             this.label_promotername.Size = new System.Drawing.Size(74, 20);
             this.label_promotername.TabIndex = 10;
             this.label_promotername.Text = "Promoter";
+            this.label_promotername.UseWaitCursor = true;
             // 
             // btn_changefestival
             // 
@@ -798,13 +855,14 @@ namespace PlanFest
             this.btn_changefestival.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_changefestival.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_changefestival.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
-            this.btn_changefestival.Location = new System.Drawing.Point(17, 500);
+            this.btn_changefestival.Location = new System.Drawing.Point(17, 491);
             this.btn_changefestival.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.btn_changefestival.Name = "btn_changefestival";
             this.btn_changefestival.Size = new System.Drawing.Size(133, 30);
             this.btn_changefestival.TabIndex = 9;
             this.btn_changefestival.Text = "Change Festival";
             this.btn_changefestival.UseVisualStyleBackColor = true;
+            this.btn_changefestival.UseWaitCursor = true;
             // 
             // btn_deletefestival
             // 
@@ -815,13 +873,15 @@ namespace PlanFest
             this.btn_deletefestival.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_deletefestival.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_deletefestival.ForeColor = System.Drawing.Color.White;
-            this.btn_deletefestival.Location = new System.Drawing.Point(604, 500);
+            this.btn_deletefestival.Location = new System.Drawing.Point(601, 497);
             this.btn_deletefestival.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.btn_deletefestival.Name = "btn_deletefestival";
             this.btn_deletefestival.Size = new System.Drawing.Size(124, 30);
             this.btn_deletefestival.TabIndex = 8;
             this.btn_deletefestival.Text = "Delete Festival";
             this.btn_deletefestival.UseVisualStyleBackColor = false;
+            this.btn_deletefestival.UseWaitCursor = true;
+            this.btn_deletefestival.Click += new System.EventHandler(this.btn_deletefestival_Click);
             // 
             // label_festivalid
             // 
@@ -832,6 +892,7 @@ namespace PlanFest
             this.label_festivalid.Size = new System.Drawing.Size(57, 13);
             this.label_festivalid.TabIndex = 5;
             this.label_festivalid.Text = "[festival id]";
+            this.label_festivalid.UseWaitCursor = true;
             // 
             // label3
             // 
@@ -842,6 +903,7 @@ namespace PlanFest
             this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "End Date";
+            this.label3.UseWaitCursor = true;
             // 
             // datepicker_festivalend
             // 
@@ -851,6 +913,7 @@ namespace PlanFest
             this.datepicker_festivalend.Name = "datepicker_festivalend";
             this.datepicker_festivalend.Size = new System.Drawing.Size(133, 20);
             this.datepicker_festivalend.TabIndex = 3;
+            this.datepicker_festivalend.UseWaitCursor = true;
             this.datepicker_festivalend.ValueChanged += new System.EventHandler(this.datepicker_festivalend_ValueChanged);
             // 
             // label2
@@ -862,6 +925,7 @@ namespace PlanFest
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Start Date";
+            this.label2.UseWaitCursor = true;
             // 
             // datepicker_festivalbegin
             // 
@@ -872,6 +936,7 @@ namespace PlanFest
             this.datepicker_festivalbegin.Name = "datepicker_festivalbegin";
             this.datepicker_festivalbegin.Size = new System.Drawing.Size(133, 20);
             this.datepicker_festivalbegin.TabIndex = 1;
+            this.datepicker_festivalbegin.UseWaitCursor = true;
             this.datepicker_festivalbegin.ValueChanged += new System.EventHandler(this.datepicker_festivalbegining_ValueChanged);
             // 
             // btn_editfestival
@@ -883,54 +948,27 @@ namespace PlanFest
             this.btn_editfestival.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_editfestival.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_editfestival.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
-            this.btn_editfestival.Location = new System.Drawing.Point(170, 500);
+            this.btn_editfestival.Location = new System.Drawing.Point(170, 491);
             this.btn_editfestival.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.btn_editfestival.Name = "btn_editfestival";
             this.btn_editfestival.Size = new System.Drawing.Size(111, 30);
             this.btn_editfestival.TabIndex = 7;
             this.btn_editfestival.Text = "Edit";
             this.btn_editfestival.UseVisualStyleBackColor = true;
+            this.btn_editfestival.UseWaitCursor = true;
             this.btn_editfestival.Click += new System.EventHandler(this.btn_editfestival_Click);
             // 
-            // label1
+            // panel_openinglist
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
-            this.label1.Location = new System.Drawing.Point(12, 109);
-            this.label1.Margin = new System.Windows.Forms.Padding(3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 25);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Festivals";
-            // 
-            // btn_addfestival
-            // 
-            this.btn_addfestival.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_addfestival.AutoSize = true;
-            this.btn_addfestival.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(175)))), ((int)(((byte)(255)))));
-            this.btn_addfestival.FlatAppearance.BorderSize = 0;
-            this.btn_addfestival.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_addfestival.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_addfestival.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
-            this.btn_addfestival.Location = new System.Drawing.Point(543, 423);
-            this.btn_addfestival.Name = "btn_addfestival";
-            this.btn_addfestival.Size = new System.Drawing.Size(182, 30);
-            this.btn_addfestival.TabIndex = 8;
-            this.btn_addfestival.Text = "Add Festival";
-            this.btn_addfestival.UseVisualStyleBackColor = true;
-            this.btn_addfestival.Click += new System.EventHandler(this.button1_Click_2);
-            // 
-            // listBox_festivalsview
-            // 
-            this.listBox_festivalsview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox_festivalsview.FormattingEnabled = true;
-            this.listBox_festivalsview.Location = new System.Drawing.Point(17, 140);
-            this.listBox_festivalsview.Name = "listBox_festivalsview";
-            this.listBox_festivalsview.Size = new System.Drawing.Size(708, 277);
-            this.listBox_festivalsview.TabIndex = 1;
+            this.panel_openinglist.Controls.Add(this.btn_openfestival);
+            this.panel_openinglist.Controls.Add(this.btn_addfestival);
+            this.panel_openinglist.Controls.Add(this.label1);
+            this.panel_openinglist.Controls.Add(this.listBox_festivalsview);
+            this.panel_openinglist.Location = new System.Drawing.Point(176, 0);
+            this.panel_openinglist.Name = "panel_openinglist";
+            this.panel_openinglist.Size = new System.Drawing.Size(734, 542);
+            this.panel_openinglist.TabIndex = 41;
+            this.panel_openinglist.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_openinglist_Paint);
             // 
             // btn_openfestival
             // 
@@ -942,13 +980,51 @@ namespace PlanFest
             this.btn_openfestival.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_openfestival.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_openfestival.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
-            this.btn_openfestival.Location = new System.Drawing.Point(355, 423);
+            this.btn_openfestival.Location = new System.Drawing.Point(358, 501);
             this.btn_openfestival.Name = "btn_openfestival";
             this.btn_openfestival.Size = new System.Drawing.Size(182, 30);
             this.btn_openfestival.TabIndex = 7;
             this.btn_openfestival.Text = "Open Festival";
             this.btn_openfestival.UseVisualStyleBackColor = true;
             this.btn_openfestival.Click += new System.EventHandler(this.btn_openfestival_Click);
+            // 
+            // btn_addfestival
+            // 
+            this.btn_addfestival.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_addfestival.AutoSize = true;
+            this.btn_addfestival.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(175)))), ((int)(((byte)(255)))));
+            this.btn_addfestival.FlatAppearance.BorderSize = 0;
+            this.btn_addfestival.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_addfestival.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_addfestival.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
+            this.btn_addfestival.Location = new System.Drawing.Point(546, 501);
+            this.btn_addfestival.Name = "btn_addfestival";
+            this.btn_addfestival.Size = new System.Drawing.Size(182, 30);
+            this.btn_addfestival.TabIndex = 8;
+            this.btn_addfestival.Text = "Add Festival";
+            this.btn_addfestival.UseVisualStyleBackColor = true;
+            this.btn_addfestival.Click += new System.EventHandler(this.button1_Click_2);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
+            this.label1.Location = new System.Drawing.Point(15, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 25);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Festivals";
+            // 
+            // listBox_festivalsview
+            // 
+            this.listBox_festivalsview.FormattingEnabled = true;
+            this.listBox_festivalsview.Location = new System.Drawing.Point(17, 40);
+            this.listBox_festivalsview.Name = "listBox_festivalsview";
+            this.listBox_festivalsview.Size = new System.Drawing.Size(705, 329);
+            this.listBox_festivalsview.TabIndex = 1;
+            this.listBox_festivalsview.SelectedValueChanged += new System.EventHandler(this.listBox_festivalsview_SelectChange);
             // 
             // PlanFest
             // 
@@ -974,11 +1050,11 @@ namespace PlanFest
             ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.panel_base.ResumeLayout(false);
             this.panel_base.PerformLayout();
-            this.panel_festivalslist.ResumeLayout(false);
-            this.panel_festivalslist.PerformLayout();
             this.panel_festival.ResumeLayout(false);
             this.panel_festival.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_ticketssold)).EndInit();
+            this.panel_openinglist.ResumeLayout(false);
+            this.panel_openinglist.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1007,7 +1083,6 @@ namespace PlanFest
         private System.Windows.Forms.Button btn_bands;
         private System.Windows.Forms.Button btn_meals;
         private System.Windows.Forms.Button btn_staff;
-        private System.Windows.Forms.Panel panel_festivalslist;
         private System.Windows.Forms.ListBox listBox_festivalsview;
         private System.Windows.Forms.Button btn_openfestival;
         private System.Windows.Forms.Button btn_addfestival;
@@ -1024,34 +1099,37 @@ namespace PlanFest
         private System.Windows.Forms.Label label_promotername;
         private System.Windows.Forms.Button btn_changefestival;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox_promoteremail;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox_promotername;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox_promotersex;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox_promotertype;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBox_managertype;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox_manageridnumber;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox_managertelephone;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox comboBox_managersex;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox_manageremail;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox_managername;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox_promoteridnumber;
-        private System.Windows.Forms.TextBox textBox_promotertelephone;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.NumericUpDown numericUpDown_ticketssold;
+        private System.Windows.Forms.Panel panel_openinglist;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.NumericUpDown numericUpDown_ticketssold;
+        private System.Windows.Forms.Label promoter_email;
+        private System.Windows.Forms.Label promoter_name;
+        private System.Windows.Forms.Label promoter_phone;
+        private System.Windows.Forms.TextBox textBox_manager_cc;
+        private System.Windows.Forms.TextBox textBox_promoter_cc;
+        private System.Windows.Forms.Label manager_sex;
+        private System.Windows.Forms.Label manager_type;
+        private System.Windows.Forms.Label manager_phone;
+        private System.Windows.Forms.Label manager_email;
+        private System.Windows.Forms.Label manager_name;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label promoter_sex;
+        private System.Windows.Forms.Label promoter_type;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DateTimePicker datepicker_proposal;
     }
 }
 

@@ -13,6 +13,7 @@ namespace PlanFest
         public string name { get; set; }
         public string dateEnd { get; set; }
         public string dateBegin { get; set; }
+        public string dateProposal { get; set;  }
         public string id { get; set; }
         public int nDays { get; set; }
         public int nTickets { get; set; }
@@ -31,14 +32,15 @@ namespace PlanFest
             meals.Add(e);
         }
 
-        public Festival(string name="", string dateEnd="", string dateBegin="", string id="", int ndays=0, int ntickets=0, Promoter promoter=null, Manager manager=null, List<Meal> meals=null, List<Stage> stages=null) : base()
+        public Festival(string name="", string dateEnd ="", string dateBegin ="", string dateProposal ="", string id="", int nDays=0, int nTickets=0, Promoter promoter=null, Manager manager=null, List<Meal> meals=null, List<Stage> stages=null) : base()
         {
             this.name = name;
             this.dateEnd = dateEnd;
             this.dateBegin = dateBegin;
+            this.dateProposal = dateProposal;
             this.id = id;
-            this.nDays = ndays;
-            this.nTickets = ntickets;
+            this.nDays = nDays;
+            this.nTickets = nTickets;
             this.promoter = promoter;
             this.manager = manager;
             this.meals = meals;

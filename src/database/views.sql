@@ -4,7 +4,8 @@
 ** Miguel Nogueira & David Araújo
  */
 --use Projeto;
-use p2g2;
+--use p2g2;
+
 CREATE VIEW FP.V_BANDAS AS
 	SELECT		id, nome, telefone, email, nElementos
 	FROM		FP.Banda;

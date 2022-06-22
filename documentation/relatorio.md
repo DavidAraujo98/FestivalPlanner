@@ -161,6 +161,8 @@ Com base nos scripts SQL de criação de *triggers*, é possível simular cenár
 
 Com base nos scripts SQL de criação de *UDFs*, é possível simular cenários de interação com a base de dados, por exemplo:
 
+ - Editar dados de um evento;   **(Cumprido)**
+ - Apagar eventos;  **(Cumprido)**
  - Pesquisar músico por Nome Artístico;
  - Dada uma data de inicio e de fim dar os eventos aí dentro;
  - Dado um nome da banda, devolver informação sobre o evento em que a banda participa;
