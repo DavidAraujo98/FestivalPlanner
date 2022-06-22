@@ -4,8 +4,8 @@
 ** Miguel Nogueira & David Araújo
  */
 
- use Projeto;
- --use p2g2;
+ --use Projeto;
+ use p2g2;
 
  --Dado um id devolve um evento
 GO 
@@ -129,7 +129,7 @@ CREATE FUNCTION getMusicoByName (@name VARCHAR(12)) RETURNS TABLE AS
 		   WHERE nomeArtistico LIKE '%' + @name + '%');
 GO
 --Teste
-SELECT * FROM getMusicoByName('Sara Ramos');
+--SELECT * FROM getMusicoByName('Sara Ramos');
 -- drop function getMusicoByName;
 
 

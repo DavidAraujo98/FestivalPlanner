@@ -1,5 +1,5 @@
-use Projeto;
---use p2g2;
+--use Projeto;
+use p2g2;
 
 CREATE INDEX idx_eventId ON FP.Evento(id);
 

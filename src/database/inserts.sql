@@ -2,8 +2,8 @@
 	Script to insert data on the Tables from the Databases Project
 	Miguel Nogueira & David Araújo
 */
-use Projeto;
-
+--use Projeto;
+use p2g2;
 
 /*	EMPRESAS DE CATERING DONE*/
 

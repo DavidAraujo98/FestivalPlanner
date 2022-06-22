@@ -140,3 +140,37 @@ O ficheiro *indexes.sql* contém o código SQL de alguns *triggers* criados sobr
 Como são feitas pesquisas pelas chaves primárias de várias tabelas, criámos *indexes* em cada uma delas. Desta forma, é mais fácil a pesquisa de informação com base nas chaves primárias.
 
 ### Interface
+
+[falta preencher]
+
+### Interações com a base de dados (demonstrado no vídeo)
+
+Com base nos scripts SQL de criação de *queries*, é possível simular cenários de interação com a base de dados, por exemplo:
+  
+ - Obter eventos cujo número de bilhetes seja maior que a média de todos os bilhetes vendidos;
+ - Obter o número de Musicos de cada comitiva e ordenar pelo número de músicos;
+ - Obter todas as empresas de catering e o número de eventos aos quais estas fornecem serviços;
+ - etc.
+
+Com base nos scripts SQL de criação de *triggers*, é possível simular cenários de interação com a base de dados, por exemplo:
+
+ - garantir que não podem existir dois soundchecks ao mesmo tempo;
+ - Soundcheck não pode durar mais de 1 hora (se durar a sua duração é ajustada para 1 hora);
+ - etc.
+  
+
+Com base nos scripts SQL de criação de *UDFs*, é possível simular cenários de interação com a base de dados, por exemplo:
+
+ - Pesquisar músico por Nome Artístico;
+ - Dada uma data de inicio e de fim dar os eventos aí dentro;
+ - Dado um nome da banda, devolver informação sobre o evento em que a banda participa;
+ - Dado o id de um Evento devolver os seus concertos e respectivos soundchecks
+ - Dado um género devolver bandas;
+ - etc.
+
+Com base nos scripts SQL de criação de *Stored Procedures*, é possível simular cenários de interação com a base de dados, por exemplo:
+
+ - Apagar um concerto dado o id do mesmo;
+ - Criar um concerto e um soundcheck para uma determinada banda;
+ - Editar um evento;
+ - etc.

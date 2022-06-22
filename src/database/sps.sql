@@ -4,8 +4,8 @@
 ** Pedro Abreu & João Gameiro
  */
 
- use Projeto;
- --use p2g2;
+ --use Projeto;
+ use p2g2;
 
 /* Criar um evento */
 GO
