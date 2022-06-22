@@ -1,7 +1,7 @@
 /*	
 ** script that contains the project Procedures
 **
-** Pedro Abreu & João Gameiro
+** Miguel Nogueira & David Araújo
  */
 
  --use Projeto;
