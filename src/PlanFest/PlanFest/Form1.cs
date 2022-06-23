@@ -17,6 +17,7 @@ namespace PlanFest
         private Festival festival = new Festival();
         private Promoter promoter = new Promoter();
         private Manager manager = new Manager();
+        private Concert concert = new Concert();
         public PlanFest()
         {
             InitializeComponent();
@@ -141,6 +142,7 @@ namespace PlanFest
         {
             if (gridview_festivals.SelectedRows.Count >= 0)
                 btn_openfestival.Enabled = true;
+                
         }
 
         private void btn_searchfestival_Click(object sender, EventArgs e)
@@ -176,6 +178,12 @@ namespace PlanFest
             CN.Close();
             updateFestivalView();
             openPanel(panel_festival);
+            btn_festivals.Enabled = true;
+            btn_concerts.Enabled = true;
+            btn_stages.Enabled = true;
+            btn_bands.Enabled = true;
+            btn_meals.Enabled = true;
+            btn_staff.Enabled = true;
         }
 
         private void btn_addfestival_Click(object sender, EventArgs e)
@@ -462,14 +470,132 @@ namespace PlanFest
         }
         // Festival details
 
+        // Concert details
+
+        private void loadConcerts()
+        {
+            if (!verifySGBDConnection())
+                return;
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM FP.V_CONCERTO WHERE event_id=@festivalID", CN);
+            cmd.Parameters.AddWithValue("@festivalID", this.festival.id);
+            gridview_festivals.Rows.Clear();
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                string[] row =
+                {
+                    reader["id"].ToString(),
+                    reader["stage_id"].ToString(),
+                    reader["band_id"].ToString(),
+                    reader["dataInicio"].ToString(),
+                    reader["concertoDuracao"].ToString(),
+                    reader["soundckDuracao"].ToString(),
+                    reader["endereco"].ToString(),
+                    reader["lotacao"].ToString(),
+                    reader["nome"].ToString()
+                };
+                dataGridView_concerts.Rows.Add(row);
+            }
+            CN.Close();
+        }
+
+        private void loadStagelist()
+        {
+            if (!verifySGBDConnection())
+                return;
+            SqlCommand cmd = new SqlCommand("SELECT * FROM FP.Palco WHERE FP.Palco.id_evento=@festival;", CN);
+            cmd.Parameters.AddWithValue("@festival", this.festival.id);
+            SqlDataReader reader = cmd.ExecuteReader();
+            comboBox_stages.Items.Clear();
+            while (reader.Read())
+            {
+                Stage C = new Stage();
+                C.id= reader["id"].ToString();
+                C.local = reader["endereco"].ToString();
+                C.lot = Int32.Parse(reader["lotacao"].ToString());
+                comboBox_stages.Items.Add(C);
+                    
+            }
+            CN.Close();
+        }
+
+        private void loadBandlist()
+        {
+            if (!verifySGBDConnection())
+                return;
+            SqlCommand cmd = new SqlCommand("SELECT * FROM FP.Banda", CN);
+            SqlDataReader reader = cmd.ExecuteReader();
+            comboBox_bandslist.Items.Clear();
+            while (reader.Read())
+            {
+                Band C = new Band();
+                C.id = reader["id"].ToString();
+                C.name = reader["nome"].ToString();
+                C.telephone = reader["telefone"].ToString();
+                C.email = reader["email"].ToString();
+                C.nElem = Int32.Parse(reader["nElementos"].ToString());
+                comboBox_bandslist.Items.Add(C);                    
+            }
+            CN.Close();
+        }
+
+        private void loadEditors(object sender, EventArgs e) {
+
+            string id = dataGridView_concerts.SelectedRows[0].Cells[0].Value.ToString();
+            this.concert = new Concert(
+                id: id,
+                dur: dataGridView_concerts.SelectedRows[0].Cells[4].Value.ToString(),
+                dateBegin: dataGridView_concerts.SelectedRows[0].Cells[3].Value.ToString()
+                );
+            if (!verifySGBDConnection())
+                return;
+            SqlCommand cmd = new SqlCommand("SELECT * FROM FP.Banda WHERE FP.Banda.id=@id", CN);
+            cmd.Parameters.AddWithValue("@id", dataGridView_concerts.SelectedRows[0].Cells[2].Value.ToString());
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+            this.concert.band = new Band(
+                    id = reader["id"].ToString(),
+                    name: reader["nome"].ToString(),
+                    telephone: reader["telefone"].ToString(),
+                    email: reader["email"].ToString(),
+                    nElem: Int32.Parse(reader["nElementos"].ToString())
+                );
+            CN.Close();
+            loadBandlist();
+            comboBox_bandslist.Text = this.concert.band.name;
+
+            if (!verifySGBDConnection())
+                return;
+            cmd = new SqlCommand("SELECT * FROM FP.Palco WHERE FP.Palco.id=@id", CN);
+            cmd.Parameters.AddWithValue("@id", dataGridView_concerts.SelectedRows[0].Cells[1].Value.ToString());
+            reader = cmd.ExecuteReader();
+            reader.Read();
+            this.concert.stage = new Stage(
+                    id = reader["id"].ToString(),
+                    local: reader["endereco"].ToString(),
+                    lot: Int32.Parse(reader["lotacao"].ToString())
+                );
+            CN.Close();
+            loadStagelist();
+            comboBox_stages.Text = this.concert.stage.local;
+
+            btn_saveeditconcert.Enabled = true;
+            textBox_concertduration.Text = this.concert.dur;
+            dateTimePicker_concert.Value = DateTime.Parse(this.concert.dateBegin);
+        }
+
+        // End Concert details
+
         // Navigation Buttons 
         private void btn_festivals_Click(object sender, EventArgs e)
         {
-
+            openPanel(panel_festival);
         }
         private void btn_concerts_Click(object sender, EventArgs e)
         {
-
+            loadConcerts();
+            openPanel(panel_concerts);
         }
 
         private void btn_stages_Click(object sender, EventArgs e)

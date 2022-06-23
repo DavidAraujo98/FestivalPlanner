@@ -21,5 +21,10 @@ namespace PlanFest
             this.lot = lot;
             this.festival = festival;
         }
+
+        public override String ToString()
+        {
+            return local;
+        }
     }
 }

@@ -20,11 +20,11 @@ namespace PlanFest
         public Promoter promoter { get; set; }
         public Manager manager { get; set; }
         public List<Meal> meals { get; set; }
-        public List<Stage> stages { get; set; }
+        public List<Concert> concerts { get; set; }
 
-        public void addStage(Stage e)
+        public void addStage(Concert e)
         {
-            stages.Add(e);
+            concerts.Add(e);
         }
 
         public void addMeal(Meal e)
@@ -32,7 +32,7 @@ namespace PlanFest
             meals.Add(e);
         }
 
-        public Festival(string name="", string dateEnd ="", string dateBegin ="", string dateProposal ="", string id="", int nDays=0, int nTickets=0, Promoter promoter=null, Manager manager=null, List<Meal> meals=null, List<Stage> stages=null) : base()
+        public Festival(string name="", string dateEnd ="", string dateBegin ="", string dateProposal ="", string id="", int nDays=0, int nTickets=0, Promoter promoter=null, Manager manager=null, List<Meal> meals=null, List<Concert> stages=null) : base()
         {
             this.name = name;
             this.dateEnd = dateEnd;
@@ -44,7 +44,7 @@ namespace PlanFest
             this.promoter = promoter;
             this.manager = manager;
             this.meals = meals;
-            this.stages = stages;
+            this.concerts = stages;
         }
 
         public override String ToString()
