@@ -49,7 +49,7 @@ namespace PlanFest
 
         public override String ToString()
         {
-            return id + "\t" + name;
+            return id + " " + name + " " + dateBegin +" " + dateEnd + " " + dateProposal + " " + nDays + " " + nTickets ;
         }
     }
 }
