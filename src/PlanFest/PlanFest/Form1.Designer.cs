@@ -31,6 +31,7 @@ namespace PlanFest
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlanFest));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.server_input = new System.Windows.Forms.TextBox();
             this.server_label = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -52,6 +53,33 @@ namespace PlanFest
             this.btn_meals = new System.Windows.Forms.Button();
             this.btn_staff = new System.Windows.Forms.Button();
             this.panel_base = new System.Windows.Forms.Panel();
+            this.panel_openinglist = new System.Windows.Forms.Panel();
+            this.btn_searchfestival = new System.Windows.Forms.Button();
+            this.label27 = new System.Windows.Forms.Label();
+            this.textBox_searchbandname = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.textBox_searchpromoteremail = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBox_searchpromoterphone = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBox_searchpromotername = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox_searchndays = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox_searchfestivalname = new System.Windows.Forms.TextBox();
+            this.gridview_festivals = new System.Windows.Forms.DataGridView();
+            this.gridview_festivalid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridview_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridview_datebegin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridview_ndays = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridview_promotername = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridview_promoteremail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridview_promoterphone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridview_bandname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_openfestival = new System.Windows.Forms.Button();
+            this.btn_addfestival = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel_festival = new System.Windows.Forms.Panel();
             this.manager_type = new System.Windows.Forms.ComboBox();
             this.promoter_type = new System.Windows.Forms.ComboBox();
@@ -94,19 +122,6 @@ namespace PlanFest
             this.label2 = new System.Windows.Forms.Label();
             this.datepicker_festivalbegin = new System.Windows.Forms.DateTimePicker();
             this.btn_editfestival = new System.Windows.Forms.Button();
-            this.panel_openinglist = new System.Windows.Forms.Panel();
-            this.gridview_festivals = new System.Windows.Forms.DataGridView();
-            this.gridview_festivalid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridview_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridview_datebegin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridview_ndays = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridview_promotername = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridview_promoteremail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridview_promoterphone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridview_bandname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_openfestival = new System.Windows.Forms.Button();
-            this.btn_addfestival = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.server.SuspendLayout();
             this.user.SuspendLayout();
             this.password.SuspendLayout();
@@ -114,10 +129,10 @@ namespace PlanFest
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.panel_base.SuspendLayout();
-            this.panel_festival.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_ticketssold)).BeginInit();
             this.panel_openinglist.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridview_festivals)).BeginInit();
+            this.panel_festival.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_ticketssold)).BeginInit();
             this.SuspendLayout();
             // 
             // server_input
@@ -276,7 +291,7 @@ namespace PlanFest
             // menu
             // 
             this.menu.AutoSize = true;
-            this.menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(211)))), ((int)(((byte)(252)))));
+            this.menu.BackColor = System.Drawing.SystemColors.MenuBar;
             this.menu.Controls.Add(this.logo);
             this.menu.Controls.Add(this.btn_festivals);
             this.menu.Controls.Add(this.btn_concerts);
@@ -297,7 +312,7 @@ namespace PlanFest
             this.logo.Location = new System.Drawing.Point(0, 0);
             this.logo.Margin = new System.Windows.Forms.Padding(0);
             this.logo.Name = "logo";
-            this.logo.Size = new System.Drawing.Size(173, 88);
+            this.logo.Size = new System.Drawing.Size(173, 75);
             this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.logo.TabIndex = 0;
             this.logo.TabStop = false;
@@ -305,12 +320,12 @@ namespace PlanFest
             // btn_festivals
             // 
             this.btn_festivals.AutoSize = true;
-            this.btn_festivals.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(175)))), ((int)(((byte)(255)))));
+            this.btn_festivals.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btn_festivals.FlatAppearance.BorderSize = 0;
             this.btn_festivals.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_festivals.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_festivals.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
-            this.btn_festivals.Location = new System.Drawing.Point(0, 138);
+            this.btn_festivals.ForeColor = System.Drawing.Color.Magenta;
+            this.btn_festivals.Location = new System.Drawing.Point(0, 125);
             this.btn_festivals.Margin = new System.Windows.Forms.Padding(0, 50, 0, 3);
             this.btn_festivals.Name = "btn_festivals";
             this.btn_festivals.Padding = new System.Windows.Forms.Padding(10, 10, 0, 10);
@@ -318,18 +333,18 @@ namespace PlanFest
             this.btn_festivals.TabIndex = 1;
             this.btn_festivals.Text = "Festivals";
             this.btn_festivals.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_festivals.UseVisualStyleBackColor = true;
+            this.btn_festivals.UseVisualStyleBackColor = false;
             this.btn_festivals.Click += new System.EventHandler(this.btn_festivals_Click);
             // 
             // btn_concerts
             // 
             this.btn_concerts.AutoSize = true;
-            this.btn_concerts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(175)))), ((int)(((byte)(255)))));
+            this.btn_concerts.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btn_concerts.FlatAppearance.BorderSize = 0;
             this.btn_concerts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_concerts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_concerts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
-            this.btn_concerts.Location = new System.Drawing.Point(0, 191);
+            this.btn_concerts.ForeColor = System.Drawing.Color.Magenta;
+            this.btn_concerts.Location = new System.Drawing.Point(0, 178);
             this.btn_concerts.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.btn_concerts.Name = "btn_concerts";
             this.btn_concerts.Padding = new System.Windows.Forms.Padding(10, 10, 0, 10);
@@ -337,18 +352,18 @@ namespace PlanFest
             this.btn_concerts.TabIndex = 2;
             this.btn_concerts.Text = "Concerts";
             this.btn_concerts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_concerts.UseVisualStyleBackColor = true;
+            this.btn_concerts.UseVisualStyleBackColor = false;
             this.btn_concerts.Click += new System.EventHandler(this.btn_concerts_Click);
             // 
             // btn_stages
             // 
             this.btn_stages.AutoSize = true;
-            this.btn_stages.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(175)))), ((int)(((byte)(255)))));
+            this.btn_stages.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btn_stages.FlatAppearance.BorderSize = 0;
             this.btn_stages.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_stages.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_stages.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
-            this.btn_stages.Location = new System.Drawing.Point(0, 244);
+            this.btn_stages.ForeColor = System.Drawing.Color.Magenta;
+            this.btn_stages.Location = new System.Drawing.Point(0, 231);
             this.btn_stages.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.btn_stages.Name = "btn_stages";
             this.btn_stages.Padding = new System.Windows.Forms.Padding(10, 10, 0, 10);
@@ -356,18 +371,18 @@ namespace PlanFest
             this.btn_stages.TabIndex = 3;
             this.btn_stages.Text = "Stages";
             this.btn_stages.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_stages.UseVisualStyleBackColor = true;
+            this.btn_stages.UseVisualStyleBackColor = false;
             this.btn_stages.Click += new System.EventHandler(this.btn_stages_Click);
             // 
             // btn_bands
             // 
             this.btn_bands.AutoSize = true;
-            this.btn_bands.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(175)))), ((int)(((byte)(255)))));
+            this.btn_bands.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btn_bands.FlatAppearance.BorderSize = 0;
             this.btn_bands.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_bands.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_bands.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
-            this.btn_bands.Location = new System.Drawing.Point(0, 297);
+            this.btn_bands.ForeColor = System.Drawing.Color.Magenta;
+            this.btn_bands.Location = new System.Drawing.Point(0, 284);
             this.btn_bands.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.btn_bands.Name = "btn_bands";
             this.btn_bands.Padding = new System.Windows.Forms.Padding(10, 10, 0, 10);
@@ -375,18 +390,18 @@ namespace PlanFest
             this.btn_bands.TabIndex = 4;
             this.btn_bands.Text = "Bands";
             this.btn_bands.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_bands.UseVisualStyleBackColor = true;
+            this.btn_bands.UseVisualStyleBackColor = false;
             this.btn_bands.Click += new System.EventHandler(this.btn_bands_Click);
             // 
             // btn_meals
             // 
             this.btn_meals.AutoSize = true;
-            this.btn_meals.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(175)))), ((int)(((byte)(255)))));
+            this.btn_meals.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btn_meals.FlatAppearance.BorderSize = 0;
             this.btn_meals.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_meals.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_meals.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
-            this.btn_meals.Location = new System.Drawing.Point(0, 350);
+            this.btn_meals.ForeColor = System.Drawing.Color.Magenta;
+            this.btn_meals.Location = new System.Drawing.Point(0, 337);
             this.btn_meals.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.btn_meals.Name = "btn_meals";
             this.btn_meals.Padding = new System.Windows.Forms.Padding(10, 10, 0, 10);
@@ -394,18 +409,18 @@ namespace PlanFest
             this.btn_meals.TabIndex = 5;
             this.btn_meals.Text = "Meals";
             this.btn_meals.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_meals.UseVisualStyleBackColor = true;
+            this.btn_meals.UseVisualStyleBackColor = false;
             this.btn_meals.Click += new System.EventHandler(this.btn_meals_Click);
             // 
             // btn_staff
             // 
             this.btn_staff.AutoSize = true;
-            this.btn_staff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(175)))), ((int)(((byte)(255)))));
+            this.btn_staff.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btn_staff.FlatAppearance.BorderSize = 0;
             this.btn_staff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_staff.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_staff.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
-            this.btn_staff.Location = new System.Drawing.Point(0, 403);
+            this.btn_staff.ForeColor = System.Drawing.Color.Magenta;
+            this.btn_staff.Location = new System.Drawing.Point(0, 390);
             this.btn_staff.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.btn_staff.Name = "btn_staff";
             this.btn_staff.Padding = new System.Windows.Forms.Padding(10, 10, 0, 10);
@@ -413,19 +428,310 @@ namespace PlanFest
             this.btn_staff.TabIndex = 6;
             this.btn_staff.Text = "Staff";
             this.btn_staff.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_staff.UseVisualStyleBackColor = true;
+            this.btn_staff.UseVisualStyleBackColor = false;
             this.btn_staff.Click += new System.EventHandler(this.btn_staff_Click);
             // 
             // panel_base
             // 
             this.panel_base.Controls.Add(this.menu);
-            this.panel_base.Controls.Add(this.panel_festival);
             this.panel_base.Controls.Add(this.panel_openinglist);
+            this.panel_base.Controls.Add(this.panel_festival);
             this.panel_base.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_base.Location = new System.Drawing.Point(0, 0);
             this.panel_base.Name = "panel_base";
             this.panel_base.Size = new System.Drawing.Size(910, 542);
             this.panel_base.TabIndex = 7;
+            // 
+            // panel_openinglist
+            // 
+            this.panel_openinglist.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel_openinglist.Controls.Add(this.btn_searchfestival);
+            this.panel_openinglist.Controls.Add(this.label27);
+            this.panel_openinglist.Controls.Add(this.textBox_searchbandname);
+            this.panel_openinglist.Controls.Add(this.label26);
+            this.panel_openinglist.Controls.Add(this.textBox_searchpromoteremail);
+            this.panel_openinglist.Controls.Add(this.label16);
+            this.panel_openinglist.Controls.Add(this.textBox_searchpromoterphone);
+            this.panel_openinglist.Controls.Add(this.label15);
+            this.panel_openinglist.Controls.Add(this.textBox_searchpromotername);
+            this.panel_openinglist.Controls.Add(this.label14);
+            this.panel_openinglist.Controls.Add(this.textBox_searchndays);
+            this.panel_openinglist.Controls.Add(this.label12);
+            this.panel_openinglist.Controls.Add(this.label13);
+            this.panel_openinglist.Controls.Add(this.textBox_searchfestivalname);
+            this.panel_openinglist.Controls.Add(this.gridview_festivals);
+            this.panel_openinglist.Controls.Add(this.btn_openfestival);
+            this.panel_openinglist.Controls.Add(this.btn_addfestival);
+            this.panel_openinglist.Controls.Add(this.label1);
+            this.panel_openinglist.Location = new System.Drawing.Point(176, 0);
+            this.panel_openinglist.Name = "panel_openinglist";
+            this.panel_openinglist.Size = new System.Drawing.Size(734, 542);
+            this.panel_openinglist.TabIndex = 41;
+            // 
+            // btn_searchfestival
+            // 
+            this.btn_searchfestival.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_searchfestival.AutoSize = true;
+            this.btn_searchfestival.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btn_searchfestival.FlatAppearance.BorderSize = 0;
+            this.btn_searchfestival.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_searchfestival.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_searchfestival.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
+            this.btn_searchfestival.Location = new System.Drawing.Point(579, 427);
+            this.btn_searchfestival.Name = "btn_searchfestival";
+            this.btn_searchfestival.Size = new System.Drawing.Size(143, 26);
+            this.btn_searchfestival.TabIndex = 28;
+            this.btn_searchfestival.Text = "Open Festival";
+            this.btn_searchfestival.UseVisualStyleBackColor = false;
+            this.btn_searchfestival.Click += new System.EventHandler(this.btn_searchfestival_Click);
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(19, 436);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(61, 13);
+            this.label27.TabIndex = 27;
+            this.label27.Text = "Band name";
+            // 
+            // textBox_searchbandname
+            // 
+            this.textBox_searchbandname.Location = new System.Drawing.Point(103, 431);
+            this.textBox_searchbandname.Name = "textBox_searchbandname";
+            this.textBox_searchbandname.Size = new System.Drawing.Size(360, 20);
+            this.textBox_searchbandname.TabIndex = 26;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(19, 363);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(76, 13);
+            this.label26.TabIndex = 25;
+            this.label26.Text = "Promoter email";
+            // 
+            // textBox_searchpromoteremail
+            // 
+            this.textBox_searchpromoteremail.Location = new System.Drawing.Point(103, 360);
+            this.textBox_searchpromoteremail.Name = "textBox_searchpromoteremail";
+            this.textBox_searchpromoteremail.Size = new System.Drawing.Size(324, 20);
+            this.textBox_searchpromoteremail.TabIndex = 24;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(433, 363);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(120, 13);
+            this.label16.TabIndex = 23;
+            this.label16.Text = "Promoter phone number";
+            // 
+            // textBox_searchpromoterphone
+            // 
+            this.textBox_searchpromoterphone.Location = new System.Drawing.Point(559, 360);
+            this.textBox_searchpromoterphone.Name = "textBox_searchpromoterphone";
+            this.textBox_searchpromoterphone.Size = new System.Drawing.Size(163, 20);
+            this.textBox_searchpromoterphone.TabIndex = 22;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(19, 328);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(78, 13);
+            this.label15.TabIndex = 21;
+            this.label15.Text = "Promoter name";
+            // 
+            // textBox_searchpromotername
+            // 
+            this.textBox_searchpromotername.Location = new System.Drawing.Point(105, 323);
+            this.textBox_searchpromotername.Name = "textBox_searchpromotername";
+            this.textBox_searchpromotername.Size = new System.Drawing.Size(619, 20);
+            this.textBox_searchpromotername.TabIndex = 20;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(473, 398);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(81, 13);
+            this.label14.TabIndex = 19;
+            this.label14.Text = "Number of days";
+            // 
+            // textBox_searchndays
+            // 
+            this.textBox_searchndays.Location = new System.Drawing.Point(559, 393);
+            this.textBox_searchndays.Name = "textBox_searchndays";
+            this.textBox_searchndays.Size = new System.Drawing.Size(163, 20);
+            this.textBox_searchndays.TabIndex = 18;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
+            this.label12.Location = new System.Drawing.Point(16, 299);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(80, 20);
+            this.label12.TabIndex = 17;
+            this.label12.Text = "Search by";
+            this.label12.UseWaitCursor = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(19, 400);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(72, 13);
+            this.label13.TabIndex = 16;
+            this.label13.Text = "Festival name";
+            // 
+            // textBox_searchfestivalname
+            // 
+            this.textBox_searchfestivalname.Location = new System.Drawing.Point(103, 395);
+            this.textBox_searchfestivalname.Name = "textBox_searchfestivalname";
+            this.textBox_searchfestivalname.Size = new System.Drawing.Size(360, 20);
+            this.textBox_searchfestivalname.TabIndex = 15;
+            // 
+            // gridview_festivals
+            // 
+            this.gridview_festivals.AllowUserToAddRows = false;
+            this.gridview_festivals.AllowUserToDeleteRows = false;
+            this.gridview_festivals.AllowUserToResizeRows = false;
+            this.gridview_festivals.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridview_festivals.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridview_festivals.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.gridview_festivals.BackgroundColor = System.Drawing.SystemColors.Menu;
+            this.gridview_festivals.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.gridview_festivals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridview_festivals.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gridview_festivalid,
+            this.gridview_name,
+            this.gridview_datebegin,
+            this.gridview_ndays,
+            this.gridview_promotername,
+            this.gridview_promoteremail,
+            this.gridview_promoterphone,
+            this.gridview_bandname});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridview_festivals.DefaultCellStyle = dataGridViewCellStyle1;
+            this.gridview_festivals.Location = new System.Drawing.Point(17, 78);
+            this.gridview_festivals.MultiSelect = false;
+            this.gridview_festivals.Name = "gridview_festivals";
+            this.gridview_festivals.ReadOnly = true;
+            this.gridview_festivals.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridview_festivals.Size = new System.Drawing.Size(705, 203);
+            this.gridview_festivals.TabIndex = 10;
+            this.gridview_festivals.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridview_festivals_SelectChange);
+            // 
+            // gridview_festivalid
+            // 
+            this.gridview_festivalid.FillWeight = 1F;
+            this.gridview_festivalid.HeaderText = "Festival ID";
+            this.gridview_festivalid.MinimumWidth = 2;
+            this.gridview_festivalid.Name = "gridview_festivalid";
+            this.gridview_festivalid.ReadOnly = true;
+            this.gridview_festivalid.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridview_festivalid.Visible = false;
+            // 
+            // gridview_name
+            // 
+            this.gridview_name.HeaderText = "Name";
+            this.gridview_name.Name = "gridview_name";
+            this.gridview_name.ReadOnly = true;
+            // 
+            // gridview_datebegin
+            // 
+            this.gridview_datebegin.HeaderText = "Date Beginning";
+            this.gridview_datebegin.Name = "gridview_datebegin";
+            this.gridview_datebegin.ReadOnly = true;
+            // 
+            // gridview_ndays
+            // 
+            this.gridview_ndays.HeaderText = "Number of Days";
+            this.gridview_ndays.Name = "gridview_ndays";
+            this.gridview_ndays.ReadOnly = true;
+            // 
+            // gridview_promotername
+            // 
+            this.gridview_promotername.HeaderText = "Promoter Name";
+            this.gridview_promotername.Name = "gridview_promotername";
+            this.gridview_promotername.ReadOnly = true;
+            // 
+            // gridview_promoteremail
+            // 
+            this.gridview_promoteremail.HeaderText = "Promoter Email";
+            this.gridview_promoteremail.Name = "gridview_promoteremail";
+            this.gridview_promoteremail.ReadOnly = true;
+            // 
+            // gridview_promoterphone
+            // 
+            this.gridview_promoterphone.HeaderText = "Promoter Phone Number";
+            this.gridview_promoterphone.Name = "gridview_promoterphone";
+            this.gridview_promoterphone.ReadOnly = true;
+            // 
+            // gridview_bandname
+            // 
+            this.gridview_bandname.HeaderText = "Band Name";
+            this.gridview_bandname.Name = "gridview_bandname";
+            this.gridview_bandname.ReadOnly = true;
+            // 
+            // btn_openfestival
+            // 
+            this.btn_openfestival.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_openfestival.AutoSize = true;
+            this.btn_openfestival.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btn_openfestival.Enabled = false;
+            this.btn_openfestival.FlatAppearance.BorderSize = 0;
+            this.btn_openfestival.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_openfestival.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_openfestival.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
+            this.btn_openfestival.Location = new System.Drawing.Point(358, 501);
+            this.btn_openfestival.Name = "btn_openfestival";
+            this.btn_openfestival.Size = new System.Drawing.Size(182, 30);
+            this.btn_openfestival.TabIndex = 7;
+            this.btn_openfestival.Text = "Open Festival";
+            this.btn_openfestival.UseVisualStyleBackColor = false;
+            this.btn_openfestival.Click += new System.EventHandler(this.btn_openfestival_Click);
+            // 
+            // btn_addfestival
+            // 
+            this.btn_addfestival.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_addfestival.AutoSize = true;
+            this.btn_addfestival.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btn_addfestival.FlatAppearance.BorderSize = 0;
+            this.btn_addfestival.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_addfestival.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_addfestival.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
+            this.btn_addfestival.Location = new System.Drawing.Point(546, 501);
+            this.btn_addfestival.Name = "btn_addfestival";
+            this.btn_addfestival.Size = new System.Drawing.Size(182, 30);
+            this.btn_addfestival.TabIndex = 8;
+            this.btn_addfestival.Text = "Add Festival";
+            this.btn_addfestival.UseVisualStyleBackColor = false;
+            this.btn_addfestival.Click += new System.EventHandler(this.btn_addfestival_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
+            this.label1.Location = new System.Drawing.Point(15, 50);
+            this.label1.Margin = new System.Windows.Forms.Padding(3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(131, 25);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Festivals list";
             // 
             // panel_festival
             // 
@@ -747,7 +1053,7 @@ namespace PlanFest
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
+            this.label17.ForeColor = System.Drawing.Color.Magenta;
             this.label17.Location = new System.Drawing.Point(13, 120);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(73, 20);
@@ -837,7 +1143,7 @@ namespace PlanFest
             // 
             this.textBox_festivalname.Enabled = false;
             this.textBox_festivalname.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_festivalname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
+            this.textBox_festivalname.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBox_festivalname.Location = new System.Drawing.Point(17, 34);
             this.textBox_festivalname.Name = "textBox_festivalname";
             this.textBox_festivalname.Size = new System.Drawing.Size(708, 38);
@@ -860,18 +1166,18 @@ namespace PlanFest
             // 
             this.btn_changefestival.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_changefestival.AutoSize = true;
-            this.btn_changefestival.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(175)))), ((int)(((byte)(255)))));
+            this.btn_changefestival.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btn_changefestival.FlatAppearance.BorderSize = 0;
             this.btn_changefestival.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_changefestival.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_changefestival.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
+            this.btn_changefestival.ForeColor = System.Drawing.Color.Magenta;
             this.btn_changefestival.Location = new System.Drawing.Point(17, 491);
             this.btn_changefestival.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.btn_changefestival.Name = "btn_changefestival";
             this.btn_changefestival.Size = new System.Drawing.Size(133, 30);
             this.btn_changefestival.TabIndex = 9;
             this.btn_changefestival.Text = "Change Festival";
-            this.btn_changefestival.UseVisualStyleBackColor = true;
+            this.btn_changefestival.UseVisualStyleBackColor = false;
             this.btn_changefestival.UseWaitCursor = true;
             this.btn_changefestival.Click += new System.EventHandler(this.btn_changefestival_Click);
             // 
@@ -952,157 +1258,20 @@ namespace PlanFest
             // 
             this.btn_editfestival.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_editfestival.AutoSize = true;
-            this.btn_editfestival.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(175)))), ((int)(((byte)(255)))));
+            this.btn_editfestival.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btn_editfestival.FlatAppearance.BorderSize = 0;
             this.btn_editfestival.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_editfestival.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_editfestival.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
+            this.btn_editfestival.ForeColor = System.Drawing.Color.Magenta;
             this.btn_editfestival.Location = new System.Drawing.Point(170, 491);
             this.btn_editfestival.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.btn_editfestival.Name = "btn_editfestival";
             this.btn_editfestival.Size = new System.Drawing.Size(111, 30);
             this.btn_editfestival.TabIndex = 7;
             this.btn_editfestival.Text = "Edit";
-            this.btn_editfestival.UseVisualStyleBackColor = true;
+            this.btn_editfestival.UseVisualStyleBackColor = false;
             this.btn_editfestival.UseWaitCursor = true;
             this.btn_editfestival.Click += new System.EventHandler(this.btn_editfestival_Click);
-            // 
-            // panel_openinglist
-            // 
-            this.panel_openinglist.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel_openinglist.Controls.Add(this.gridview_festivals);
-            this.panel_openinglist.Controls.Add(this.btn_openfestival);
-            this.panel_openinglist.Controls.Add(this.btn_addfestival);
-            this.panel_openinglist.Controls.Add(this.label1);
-            this.panel_openinglist.Location = new System.Drawing.Point(176, 0);
-            this.panel_openinglist.Name = "panel_openinglist";
-            this.panel_openinglist.Size = new System.Drawing.Size(734, 542);
-            this.panel_openinglist.TabIndex = 41;
-            // 
-            // gridview_festivals
-            // 
-            this.gridview_festivals.AllowUserToAddRows = false;
-            this.gridview_festivals.AllowUserToDeleteRows = false;
-            this.gridview_festivals.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridview_festivals.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(211)))), ((int)(((byte)(252)))));
-            this.gridview_festivals.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.gridview_festivals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridview_festivals.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.gridview_festivalid,
-            this.gridview_name,
-            this.gridview_datebegin,
-            this.gridview_ndays,
-            this.gridview_promotername,
-            this.gridview_promoteremail,
-            this.gridview_promoterphone,
-            this.gridview_bandname});
-            this.gridview_festivals.Location = new System.Drawing.Point(17, 91);
-            this.gridview_festivals.Name = "gridview_festivals";
-            this.gridview_festivals.ReadOnly = true;
-            this.gridview_festivals.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridview_festivals.Size = new System.Drawing.Size(705, 309);
-            this.gridview_festivals.TabIndex = 10;
-            this.gridview_festivals.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridview_festivals_SelectChange);
-            // 
-            // gridview_festivalid
-            // 
-            this.gridview_festivalid.HeaderText = "Festival ID";
-            this.gridview_festivalid.Name = "gridview_festivalid";
-            this.gridview_festivalid.ReadOnly = true;
-            this.gridview_festivalid.Visible = false;
-            // 
-            // gridview_name
-            // 
-            this.gridview_name.HeaderText = "Name";
-            this.gridview_name.Name = "gridview_name";
-            this.gridview_name.ReadOnly = true;
-            // 
-            // gridview_datebegin
-            // 
-            this.gridview_datebegin.HeaderText = "Date Beginning";
-            this.gridview_datebegin.Name = "gridview_datebegin";
-            this.gridview_datebegin.ReadOnly = true;
-            // 
-            // gridview_ndays
-            // 
-            this.gridview_ndays.HeaderText = "Number of Days";
-            this.gridview_ndays.Name = "gridview_ndays";
-            this.gridview_ndays.ReadOnly = true;
-            // 
-            // gridview_promotername
-            // 
-            this.gridview_promotername.HeaderText = "Promoter Name";
-            this.gridview_promotername.Name = "gridview_promotername";
-            this.gridview_promotername.ReadOnly = true;
-            // 
-            // gridview_promoteremail
-            // 
-            this.gridview_promoteremail.HeaderText = "Promoter Email";
-            this.gridview_promoteremail.Name = "gridview_promoteremail";
-            this.gridview_promoteremail.ReadOnly = true;
-            // 
-            // gridview_promoterphone
-            // 
-            this.gridview_promoterphone.HeaderText = "Promoter Phone Number";
-            this.gridview_promoterphone.Name = "gridview_promoterphone";
-            this.gridview_promoterphone.ReadOnly = true;
-            // 
-            // gridview_bandname
-            // 
-            this.gridview_bandname.HeaderText = "Band Name";
-            this.gridview_bandname.Name = "gridview_bandname";
-            this.gridview_bandname.ReadOnly = true;
-            // 
-            // btn_openfestival
-            // 
-            this.btn_openfestival.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_openfestival.AutoSize = true;
-            this.btn_openfestival.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(175)))), ((int)(((byte)(255)))));
-            this.btn_openfestival.Enabled = false;
-            this.btn_openfestival.FlatAppearance.BorderSize = 0;
-            this.btn_openfestival.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_openfestival.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_openfestival.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
-            this.btn_openfestival.Location = new System.Drawing.Point(358, 501);
-            this.btn_openfestival.Name = "btn_openfestival";
-            this.btn_openfestival.Size = new System.Drawing.Size(182, 30);
-            this.btn_openfestival.TabIndex = 7;
-            this.btn_openfestival.Text = "Open Festival";
-            this.btn_openfestival.UseVisualStyleBackColor = true;
-            this.btn_openfestival.Click += new System.EventHandler(this.btn_openfestival_Click);
-            // 
-            // btn_addfestival
-            // 
-            this.btn_addfestival.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_addfestival.AutoSize = true;
-            this.btn_addfestival.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(175)))), ((int)(((byte)(255)))));
-            this.btn_addfestival.FlatAppearance.BorderSize = 0;
-            this.btn_addfestival.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_addfestival.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_addfestival.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
-            this.btn_addfestival.Location = new System.Drawing.Point(546, 501);
-            this.btn_addfestival.Name = "btn_addfestival";
-            this.btn_addfestival.Size = new System.Drawing.Size(182, 30);
-            this.btn_addfestival.TabIndex = 8;
-            this.btn_addfestival.Text = "Add Festival";
-            this.btn_addfestival.UseVisualStyleBackColor = true;
-            this.btn_addfestival.Click += new System.EventHandler(this.btn_addfestival_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
-            this.label1.Location = new System.Drawing.Point(15, 9);
-            this.label1.Margin = new System.Windows.Forms.Padding(3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 25);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Festivals";
             // 
             // PlanFest
             // 
@@ -1128,12 +1297,12 @@ namespace PlanFest
             ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.panel_base.ResumeLayout(false);
             this.panel_base.PerformLayout();
-            this.panel_festival.ResumeLayout(false);
-            this.panel_festival.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_ticketssold)).EndInit();
             this.panel_openinglist.ResumeLayout(false);
             this.panel_openinglist.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridview_festivals)).EndInit();
+            this.panel_festival.ResumeLayout(false);
+            this.panel_festival.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_ticketssold)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1165,32 +1334,13 @@ namespace PlanFest
         private System.Windows.Forms.Button btn_openfestival;
         private System.Windows.Forms.Button btn_addfestival;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel_festival;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker datepicker_festivalbegin;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker datepicker_festivalend;
-        private System.Windows.Forms.Label label_festivalid;
-        private System.Windows.Forms.Button btn_deletefestival;
-        private System.Windows.Forms.Button btn_editfestival;
-        private System.Windows.Forms.TextBox textBox_festivalname;
-        private System.Windows.Forms.Label label_promotername;
-        private System.Windows.Forms.Button btn_changefestival;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Panel panel_openinglist;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.NumericUpDown numericUpDown_ticketssold;
-        private System.Windows.Forms.Label promoter_email;
-        private System.Windows.Forms.Label promoter_name;
-        private System.Windows.Forms.Label promoter_phone;
+        private System.Windows.Forms.DataGridView gridview_festivals;
+        private System.Windows.Forms.Panel panel_festival;
+        private System.Windows.Forms.ComboBox manager_type;
+        private System.Windows.Forms.ComboBox promoter_type;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DateTimePicker datepicker_proposal;
         private System.Windows.Forms.TextBox textBox_manager_cc;
         private System.Windows.Forms.TextBox textBox_promoter_cc;
         private System.Windows.Forms.Label manager_sex;
@@ -1204,9 +1354,30 @@ namespace PlanFest
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label promoter_sex;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DateTimePicker datepicker_proposal;
-        private System.Windows.Forms.DataGridView gridview_festivals;
+        private System.Windows.Forms.Label promoter_phone;
+        private System.Windows.Forms.Label promoter_email;
+        private System.Windows.Forms.Label promoter_name;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.NumericUpDown numericUpDown_ticketssold;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox_festivalname;
+        private System.Windows.Forms.Label label_promotername;
+        private System.Windows.Forms.Button btn_changefestival;
+        private System.Windows.Forms.Button btn_deletefestival;
+        private System.Windows.Forms.Label label_festivalid;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker datepicker_festivalend;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker datepicker_festivalbegin;
+        private System.Windows.Forms.Button btn_editfestival;
         private System.Windows.Forms.DataGridViewTextBoxColumn gridview_festivalid;
         private System.Windows.Forms.DataGridViewTextBoxColumn gridview_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn gridview_datebegin;
@@ -1215,8 +1386,20 @@ namespace PlanFest
         private System.Windows.Forms.DataGridViewTextBoxColumn gridview_promoteremail;
         private System.Windows.Forms.DataGridViewTextBoxColumn gridview_promoterphone;
         private System.Windows.Forms.DataGridViewTextBoxColumn gridview_bandname;
-        private System.Windows.Forms.ComboBox manager_type;
-        private System.Windows.Forms.ComboBox promoter_type;
+        private System.Windows.Forms.TextBox textBox_searchfestivalname;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox textBox_searchndays;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textBox_searchpromotername;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox textBox_searchpromoteremail;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox textBox_searchpromoterphone;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox textBox_searchbandname;
+        private System.Windows.Forms.Button btn_searchfestival;
     }
 }
 

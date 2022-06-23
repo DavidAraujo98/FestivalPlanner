@@ -32,10 +32,10 @@ namespace PlanFest
         private SqlConnection getSGBDConnection()
         {
             /* ---------- For testing only ----------  */
-            //return new SqlConnection("data source=WIN11\\SQLEXPRESS;integrated security=true;initial catalog=Projeto");
+            return new SqlConnection("data source=WIN11\\SQLEXPRESS;integrated security=true;initial catalog=Projeto");
             /* ---------- For testing only ----------  */
 
-            return new SqlConnection("Data Source = " + server_input.Text + " ;" + "Initial Catalog = " + user_input.Text + "; uid = " + user_input.Text + ";" + "password = " + password_input.Text);
+            //return new SqlConnection("Data Source = " + server_input.Text + " ;" + "Initial Catalog = " + user_input.Text + "; uid = " + user_input.Text + ";" + "password = " + password_input.Text);
         }
 
         private bool TestDBConnection()
@@ -109,10 +109,15 @@ namespace PlanFest
             if (!verifySGBDConnection())
                 return;
 
-            SqlCommand cmd = new SqlCommand("SELECT * FROM FP.V_GERAL", CN);
-            SqlDataReader reader = cmd.ExecuteReader();
+            SqlCommand cmd = new SqlCommand("select * from getOverviewBy(@festivalname, @ndays, @promname,@prommail,@promphone, @bandname)", CN);
+            cmd.Parameters.AddWithValue("@festivalname",textBox_searchfestivalname.Text);
+            cmd.Parameters.AddWithValue("@ndays", textBox_searchndays.Text);
+            cmd.Parameters.AddWithValue("@promname", textBox_searchpromotername.Text);
+            cmd.Parameters.AddWithValue("@prommail", textBox_searchpromoteremail.Text);
+            cmd.Parameters.AddWithValue("@promphone", textBox_searchpromoterphone.Text);
+            cmd.Parameters.AddWithValue("@bandname", textBox_searchbandname.Text);
             gridview_festivals.Rows.Clear();
-
+            SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 string[] row =
@@ -136,6 +141,11 @@ namespace PlanFest
         {
             if (gridview_festivals.SelectedRows.Count >= 0)
                 btn_openfestival.Enabled = true;
+        }
+
+        private void btn_searchfestival_Click(object sender, EventArgs e)
+        {
+            loadFestivals();
         }
 
         private void btn_openfestival_Click(object sender, EventArgs e)
