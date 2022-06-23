@@ -104,8 +104,6 @@ END
 EXEC delete_concerto_byId 49;
 
 
-
-
 /*Editar um evento */
 GO
 CREATE PROCEDURE alter_evento( @id VARCHAR(20), @nome VARCHAR(150), @numdias INT, @dataini DATETIME, @datafim DATETIME, @numBilhetes INT, @dataproposta DATETIME, @cc_promotor VARCHAR(12), @cc_manager VARCHAR(12) )

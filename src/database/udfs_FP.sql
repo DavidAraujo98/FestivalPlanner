@@ -100,7 +100,7 @@ GO
 --Dado o nome de uma Banda devolver os seus concertos
 GO
 CREATE FUNCTION getConcertosByNomeBanda( @nome VARCHAR(150)) RETURNS TABLE AS
-	RETURN(SELECT FP.CONCERTO.id AS IdConcerto, FP.BANDA.nome, id_banda,  dataInicio, duracao 
+	RETURN(SELECT FP.CONCERTO.id AS id, FP.CONCERTO.id_evento, FP.BANDA.nome, id_banda,  dataInicio, duracao 
 		   FROM FP.BANDA, FP.CONCERTO
 		   WHERE FP.BANDA.nome=@nome AND FP.BANDA.id=id_banda);
 GO
@@ -144,6 +144,16 @@ GO
 --SELECT * FROM getBandaById('ff');
 -- drop function getBandaById;
 
+GO
+CREATE FUNCTION getBandByConcertoId(@id VARCHAR(20)) RETURNS TABLE AS
+	RETURN(SELECT FP.Banda.*
+			FROM FP.Concerto INNER JOIN
+			FP.Palco ON FP.Palco.id = FP.Concerto.id_palco INNER JOIN
+			FP.Banda ON FP.Banda.id = FP.Concerto.id_banda
+			WHERE FP.Concerto.id = @id)
+GO
+--SELECT * FROM getBandByConcertoId('3');
+-- drop function getBandByConcertoId;
 
 --Dado um nome devolver a banda
 GO
@@ -234,3 +244,26 @@ CREATE FUNCTION getOverviewByBanda (@banda VARCHAR(20)) RETURNS TABLE AS
 GO
 --select * from getOverviewByBanda('Foo')
 -- drop function getOverviewByBanda;
+GO
+CREATE FUNCTION getOverviewByPromotorName (@promotor_nome VARCHAR(20)) RETURNS TABLE AS
+	RETURN(SELECT * FROM FP.V_GERAL
+		   WHERE PROMOTOR_NOME LIKE  '%' + @promotor_nome + '%')
+--select * from getOverviewByPromotorName('Álvaro')
+-- drop function getOverviewByPromotorName;
+GO
+CREATE FUNCTION getOverviewByPromotorEmail (@promotor_email VARCHAR(20)) RETURNS TABLE AS
+	RETURN(SELECT * FROM FP.V_GERAL
+		   WHERE PROMOTOR_EMAIL LIKE  '%' + @promotor_email + '%')
+--select * from getOverviewByPromotorEmail('ac@gmail.com')
+-- drop function getOverviewByPromotorEmail;
+GO
+CREATE FUNCTION getOverviewBy (@nome VARCHAR(20),@numdias VARCHAR(20),@promotor_nome VARCHAR(20), @promotor_email VARCHAR(20),@phone VARCHAR(12),@banda VARCHAR(20)  ) RETURNS TABLE AS
+	RETURN(SELECT * FROM FP.V_GERAL
+			WHERE EVENTO_NOME LIKE '%' + @nome + '%'
+			AND nDias LIKE  '%' + @numdias + '%'
+			AND PROMOTOR_NOME LIKE  '%' + @promotor_nome + '%'
+			AND PROMOTOR_EMAIL LIKE  '%' + @promotor_email + '%'
+			AND nome LIKE  '%' + @banda + '%'
+			AND PROMOTOR_TELEFONE LIKE '%' + @phone + '%')
+--select * from getOverviewBy('Rap', '3', '','','', 'Benzi')
+--drop function getOverviewBy;

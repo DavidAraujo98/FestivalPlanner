@@ -33,10 +33,10 @@ namespace PlanFest
         private SqlConnection getSGBDConnection()
         {
             /* ---------- For testing only ----------  */
-            return new SqlConnection("data source=WIN11\\SQLEXPRESS;integrated security=true;initial catalog=Projeto");
+            //return new SqlConnection("data source=WIN11\\SQLEXPRESS;integrated security=true;initial catalog=Projeto");
             /* ---------- For testing only ----------  */
 
-            //return new SqlConnection("Data Source = " + server_input.Text + " ;" + "Initial Catalog = " + user_input.Text + "; uid = " + user_input.Text + ";" + "password = " + password_input.Text);
+            return new SqlConnection("Data Source = " + server_input.Text + " ;" + "Initial Catalog = " + user_input.Text + "; uid = " + user_input.Text + ";" + "password = " + password_input.Text);
         }
 
         private bool TestDBConnection()

@@ -20,8 +20,17 @@ CREATE VIEW FP.V_GERAL AS
 				FP.Concerto	ON FP.Concerto.id_evento = FP.Evento.id LEFT JOIN
 				FP.Banda ON FP.Banda.id = FP.Concerto.id_banda; 
 
+CREATE VIEW FP.V_CONCERTO AS
+	SELECT		FP.Evento.id AS event_id, FP.Concerto.id, FP.Banda.id AS band_id, FP.Palco.id AS stage_id,  FP.Concerto.dataInicio AS dataInicio, FP.Concerto.duracao AS concertoDuracao, FP.SoundCheck.duracao AS soundckDuracao, FP.Palco.endereco, FP.Palco.lotacao, FP.Banda.nome, FP.SoundCheck.id AS sound_id
+	FROM		FP.Concerto INNER JOIN
+				FP.Evento ON FP.Concerto.id_evento=FP.Evento.id INNER JOIN
+				FP.Palco ON FP.Concerto.id_palco = FP.Palco.id INNER JOIN
+				FP.SoundCheck ON FP.Concerto.id_soundcheck = FP.SoundCheck.id INNER JOIN
+				FP.Banda ON FP.Concerto.id_banda = FP.Banda.id
 --DROP VIEW FP.V_BANDAS;
 --DROP VIEW FP.V_GERAL;
+--DROP VIEW FP.V_CONCERTO;
 
 --SELECT * FROM FP.V_BANDAS;
 --SELECT * FROM FP.V_GERAL;
+--SELECT * FROM FP.V_CONCERTO;
