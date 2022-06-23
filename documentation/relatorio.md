@@ -141,11 +141,13 @@ Como são feitas pesquisas pelas chaves primárias de várias tabelas, criámos 
 
 ### Interface
 
-[falta preencher]
+Interface construida em Windows Form Application, em C#.
 
-### Interações com a base de dados (demonstrado no vídeo)
+Foi dado maior foco à implementação das principais tarefas como gestão dos dados de um Evento e dos dados de um Concerto por serem as tabelas mais complexas em termos de dependências e para as quais também fora dado maior destaque na criação de views, triggers, used defined functions e stored procedures; de forma a assim maximizarmos a utilização deste trabalho em SQL.
 
-Com base nos scripts SQL de criação de *queries*, é possível simular cenários de interação com a base de dados, por exemplo:
+A ser implementado no GUI ficam interações semelhantes às já implementadas mas paras as restantes, e que não apresentam grande variadade de interação comparativamente as anteriores descritas.
+
+Com base nos scripts SQL de criação de *queries*, é possível simular alguns dos cenários de interação com a base de dados, por exemplo:
   
  - Obter eventos cujo número de bilhetes seja maior que a média de todos os bilhetes vendidos;
  - Obter o número de Musicos de cada comitiva e ordenar pelo número de músicos;
@@ -161,8 +163,8 @@ Com base nos scripts SQL de criação de *triggers*, é possível simular cenár
 
 Com base nos scripts SQL de criação de *UDFs*, é possível simular cenários de interação com a base de dados, por exemplo:
 
- - Editar dados de um evento;   **(Cumprido)**
- - Apagar eventos;  **(Cumprido)**
+ - Editar dados de um evento;
+ - Apagar eventos;
  - Pesquisar músico por Nome Artístico;
  - Dada uma data de inicio e de fim dar os eventos aí dentro;
  - Dado um nome da banda, devolver informação sobre o evento em que a banda participa;
