@@ -479,7 +479,7 @@ namespace PlanFest
 
             SqlCommand cmd = new SqlCommand("SELECT * FROM FP.V_CONCERTO WHERE event_id=@festivalID", CN);
             cmd.Parameters.AddWithValue("@festivalID", this.festival.id);
-            gridview_festivals.Rows.Clear();
+            dataGridView_concerts.Rows.Clear();
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -493,7 +493,8 @@ namespace PlanFest
                     reader["soundckDuracao"].ToString(),
                     reader["endereco"].ToString(),
                     reader["lotacao"].ToString(),
-                    reader["nome"].ToString()
+                    reader["nome"].ToString(),
+                    reader["sound_id"].ToString()
                 };
                 dataGridView_concerts.Rows.Add(row);
             }
@@ -580,11 +581,122 @@ namespace PlanFest
             loadStagelist();
             comboBox_stages.Text = this.concert.stage.local;
 
+            if (!verifySGBDConnection())
+                return;
+            cmd = new SqlCommand("SELECT * FROM FP.SoundCheck WHERE FP.SoundCheck.id=@id", CN);
+            cmd.Parameters.AddWithValue("@id", dataGridView_concerts.SelectedRows[0].Cells[9].Value.ToString());
+            reader = cmd.ExecuteReader();
+            reader.Read();
+            this.concert.soundcheck = new SoundCheck(
+                    id = reader["id"].ToString(),
+                    dateBegin: reader["dataInicio"].ToString(),
+                    dur: Int32.Parse(reader["duracao"].ToString())
+                );
+            CN.Close();
+            dateTimePicker_soundcheck.Value = DateTime.Parse(this.concert.soundcheck.dateBegin);
+            textBox_soundckduration.Text = this.concert.soundcheck.dur.ToString();
+
             btn_saveeditconcert.Enabled = true;
             textBox_concertduration.Text = this.concert.dur;
             dateTimePicker_concert.Value = DateTime.Parse(this.concert.dateBegin);
         }
 
+        private void btn_saveeditconcert_Click(object sender, EventArgs e)
+        {
+            this.concert.dur = textBox_concertduration.Text;
+            this.concert.dateBegin = dateTimePicker_concert.Value.ToString();
+            this.concert.band = (Band)comboBox_bandslist.SelectedItem;
+            this.concert.stage = (Stage)comboBox_stages.SelectedItem;
+            if (!verifySGBDConnection())
+                return;
+            SqlCommand cmd = new SqlCommand("UPDATE FP.Concerto SET id_palco=@id_palco, id_banda=@id_banda, duracao=@duracao, dataInicio=@dataInicio WHERE id=@id;", CN);
+            cmd.Parameters.AddWithValue("@id", this.concert.id);
+            cmd.Parameters.AddWithValue("@id_palco", this.concert.stage.id);
+            cmd.Parameters.AddWithValue("@id_banda", this.concert.band.id);
+            cmd.Parameters.AddWithValue("@duracao", this.concert.dur);
+            cmd.Parameters.AddWithValue("@dataInicio", this.concert.dateBegin);
+            try
+            {
+                cmd.ExecuteNonQuery();
+                CN.Close();
+                loadConcerts();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to update festival in database. \n ERROR MESSAGE: \n" + ex.Message);
+            }
+        }
+
+        private void btn_addconcert_Click(object sender, EventArgs e)
+        {
+            if(btn_addconcert.Text == "Add Concert")
+            {
+                dateTimePicker_concert.ResetText();
+                comboBox_stages.SelectedIndex = -1;
+                comboBox_bandslist.SelectedIndex = -1;
+                textBox_concertduration.ResetText();
+                dateTimePicker_soundcheck.ResetText();
+                textBox_soundckduration.ResetText();
+                btn_addconcert.Text = "Save";
+                loadStagelist();
+                loadBandlist();
+            }
+            else
+            {
+                this.concert.dur = textBox_concertduration.Text;
+                this.concert.dateBegin = dateTimePicker_concert.Value.ToString();
+                this.concert.band = (Band)comboBox_bandslist.SelectedItem;
+                this.concert.stage = (Stage)comboBox_stages.SelectedItem;
+                this.concert.soundcheck = new SoundCheck(
+                        id: DateTime.Now.Millisecond.ToString(),
+                        dateBegin: dateTimePicker_soundcheck.Value.ToString(),
+                        dur: Int32.Parse(textBox_soundckduration.Text)
+                    );
+                if (!verifySGBDConnection())
+                    return;
+                SqlCommand cmd = new SqlCommand("EXEC create_concerto @id, @id_evento, @id_palco, @id_banda, @duracao, @datatimeini, @id_soundcheck, @duracao_soundcheck, @data_soundcheck;", CN);
+                cmd.Parameters.AddWithValue("@id", DateTime.Now.Millisecond);
+                cmd.Parameters.AddWithValue("@id_evento", this.festival.id);
+                cmd.Parameters.AddWithValue("@id_palco", this.concert.stage.id);
+                cmd.Parameters.AddWithValue("@id_banda", this.concert.band.id);
+                cmd.Parameters.AddWithValue("@duracao", Int32.Parse(this.concert.dur));
+                cmd.Parameters.AddWithValue("@datatimeini", dateTimePicker_concert.Value);
+                cmd.Parameters.AddWithValue("@id_soundcheck", this.concert.soundcheck.id);
+                cmd.Parameters.AddWithValue("@duracao_soundcheck", this.concert.soundcheck.dur);
+                cmd.Parameters.AddWithValue("@data_soundcheck", dateTimePicker_soundcheck.Value);
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    CN.Close();
+                    loadConcerts();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Failed to update festival in database. \n ERROR MESSAGE: \n" + ex.Message);
+                }
+                btn_addconcert.Text = "Add Concert";
+            }
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!verifySGBDConnection())
+                return;
+            SqlCommand cmd = new SqlCommand("EXEC  delete_concerto_byId @id", CN);
+            cmd.Parameters.AddWithValue("@id", this.concert.id);
+            try
+            {
+                cmd.ExecuteNonQuery();
+                CN.Close();
+                this.concert = new Concert();
+                loadConcerts();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to update festival in database. \n ERROR MESSAGE: \n" + ex.Message);
+            }
+        }
         // End Concert details
 
         // Navigation Buttons 
@@ -618,6 +730,12 @@ namespace PlanFest
 
         }
 
+        private void panel_concerts_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        
         // End Navigation Buttons
     }
 }

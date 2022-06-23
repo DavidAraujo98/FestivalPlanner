@@ -10,14 +10,17 @@ namespace PlanFest
     internal class SoundCheck
     {
         public string id { get; set;}
-        private string dateBegin { get; set; }
+        public string dateBegin { get; set; }
+
+        public int dur { get; set; }
 
         private Concert concert { get; set; }
 
-        public SoundCheck(string id="", string dateBegin="", Concert concert=null) : base()
+        public SoundCheck(string id="", string dateBegin="", int dur=0, Concert concert=null) : base()
         {
             this.id = id;
             this.dateBegin = dateBegin;
+            this.dur = dur;
             this.concert = concert;
         }
     }
