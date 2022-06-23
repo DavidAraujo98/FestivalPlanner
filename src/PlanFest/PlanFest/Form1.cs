@@ -32,10 +32,10 @@ namespace PlanFest
         private SqlConnection getSGBDConnection()
         {
             /* ---------- For testing only ----------  */
-            return new SqlConnection("data source=WIN11\\SQLEXPRESS;integrated security=true;initial catalog=Projeto");
+            //return new SqlConnection("data source=WIN11\\SQLEXPRESS;integrated security=true;initial catalog=Projeto");
             /* ---------- For testing only ----------  */
 
-            //return new SqlConnection("Data Source = " + server_input.Text + " ;" + "Initial Catalog = " + user_input.Text + "; uid = " + user_input.Text + ";" + "password = " + password_input.Text);
+            return new SqlConnection("Data Source = " + server_input.Text + " ;" + "Initial Catalog = " + user_input.Text + "; uid = " + user_input.Text + ";" + "password = " + password_input.Text);
         }
 
         private bool TestDBConnection()
@@ -170,6 +170,9 @@ namespace PlanFest
 
         private void btn_addfestival_Click(object sender, EventArgs e)
         {
+            this.festival = new Festival();
+            this.promoter = new Promoter();
+            this.manager = new Manager();
             textBox_festivalname.Enabled = true;
             datepicker_festivalbegin.Enabled = true;
             datepicker_festivalend.Enabled = true;
@@ -180,6 +183,7 @@ namespace PlanFest
             promoter_type.Enabled = true;
             manager_type.Enabled = true;
             btn_editfestival.Text = "Create";
+            resetFestivalView();
             openPanel(panel_festival);
         }
         // End Festivals Lists
@@ -209,6 +213,25 @@ namespace PlanFest
             loadManager();
         }
 
+        private void resetFestivalView()
+        {
+            textBox_festivalname.ResetText();
+            datepicker_festivalbegin.ResetText();
+            datepicker_festivalend.ResetText();
+            datepicker_proposal.ResetText();
+            numericUpDown_ticketssold.ResetText();
+            label_festivalid.ResetText();
+            promoter_type.ResetText();
+            manager_type.ResetText();
+            textBox_promoter_cc.ResetText();
+            textBox_manager_cc.ResetText();
+            promoter_name.ResetText();
+            manager_name.ResetText();
+            promoter_email.ResetText();
+            manager_email.ResetText();
+            promoter_sex.ResetText();
+            manager_sex.ResetText();
+        }
         private void updateFestivalView()
         {
             textBox_festivalname.Text = this.festival.name;
@@ -245,7 +268,7 @@ namespace PlanFest
             this.promoter.sex = promoter_sex.Text = reader["sexo"].ToString();
             this.promoter.telephone = promoter_phone.Text = reader["telefone"].ToString();
             this.promoter.cc = textBox_promoter_cc.Text = reader["cc"].ToString();
-            if (btn_editfestival.Text == "Save")
+            if (btn_editfestival.Text == "Save" || btn_editfestival.Text == "Create")
             {
                 this.promoter.type = promoter_type.Text;
             } 
@@ -280,7 +303,7 @@ namespace PlanFest
             this.manager.sex = manager_sex.Text = reader["sexo"].ToString();
             this.manager.telephone = manager_phone.Text = reader["telefone"].ToString();
             this.manager.cc = textBox_manager_cc.Text = reader["cc"].ToString();
-            if (btn_editfestival.Text == "Save")
+            if (btn_editfestival.Text == "Save" || btn_editfestival.Text == "Create")
             {
                 this.manager.type = manager_type.Text;
             }
@@ -424,6 +447,7 @@ namespace PlanFest
 
         private void btn_changefestival_Click(object sender, EventArgs e)
         {
+            loadFestivals();
             openPanel(panel_openinglist);
         }
         // Festival details
